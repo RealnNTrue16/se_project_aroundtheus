@@ -1,0 +1,12 @@
+/**********HEADER CSS*****************/
+
+.header {
+  padding-top: 45px;
+  border-bottom: 1px solid gray;
+}
+
+.header__image {
+  border-radius: 5px;
+}
+
+/******End Header CSS **********/
