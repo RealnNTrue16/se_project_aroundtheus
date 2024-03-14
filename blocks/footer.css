@@ -1,0 +1,9 @@
+.footer {
+  margin-top: 67px;
+}
+
+.footer__text {
+  margin: 0;
+  color: #545454;
+  max-width: 318px;
+}
