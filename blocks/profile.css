@@ -30,6 +30,7 @@
   font-weight: 500;
   grid-area: title;
   margin: 0;
+  white-space: nowrap;
 }
 
 .profile__edit-button {
@@ -40,6 +41,7 @@
   width: 24px;
   height: 24px;
   grid-area: button;
+  margin-left: 18px;
 }
 
 .profile__add-button {
