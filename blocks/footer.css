@@ -7,3 +7,9 @@
   color: #545454;
   max-width: 318px;
 }
+
+@media screen and (min-width: 320px) and (max-width: 780px) {
+  .footer {
+    padding-top: 67px;
+  }
+}
