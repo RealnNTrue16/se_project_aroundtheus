@@ -9,4 +9,13 @@
   border-radius: 5px;
 }
 
+@media screen and (max-width: 320px) {
+  .header {
+    width: 100%;
+  }
+  .header__image {
+    max-width: 126px;
+  }
+}
+
 /******End Header CSS **********/
