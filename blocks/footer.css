@@ -8,6 +8,7 @@
   max-width: 318px;
 }
 
+/*** Tablet View ***/
 @media screen and (min-width: 320px) and (max-width: 780px) {
   .footer {
     padding-top: 67px;

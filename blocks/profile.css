@@ -90,6 +90,11 @@
     line-height: 27px;
     margin-left: 40px;
     margin-top: 42px;
+
+    /**Text Overflow on Mobile **/
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .profile__description {
@@ -97,6 +102,11 @@
     width: 100%;
     margin-top: 14px;
     margin-bottom: 36px;
+
+    /** Text Overflow Mobile **/
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .profile__edit-button {

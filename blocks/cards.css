@@ -52,6 +52,8 @@
   border: none;
 }
 
+/**Mobile Phone ***/
+
 @media screen and (max-width: 320px) {
   .card {
     margin-top: 30px;
