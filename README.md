@@ -14,6 +14,9 @@ This Project was made usong HTML/CSS and incorporates different positoioning tec
 Project Link:
 https://github.com/RealnNTrue16/se_project_aroundtheus
 
+Video Link:
+https://1drv.ms/v/s!An4nOF0nHWDZhah0BiO1SPVi7-Oatg?e=6kFrrs
+
 **Figma**
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
