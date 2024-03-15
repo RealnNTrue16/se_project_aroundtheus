@@ -11,7 +11,7 @@
 This project is made so all the elements are displayed correctly on popular screen sizes.
 This Project was made usong HTML/CSS and incorporates different positoioning techniques to ensure the webpage is responsive.
 
-Projecrt Link:
+Project Link:
 https://github.com/RealnNTrue16/se_project_aroundtheus
 
 **Figma**
