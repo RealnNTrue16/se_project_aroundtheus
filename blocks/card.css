@@ -1,18 +1,3 @@
-.cards {
-  /* fonts */
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  margin-top: 30px;
-}
-
-.cards__list {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 20px 17px;
-  padding: 0;
-  margin: 0;
-}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -56,6 +41,8 @@
 
 .card__like-button:hover {
   border-color: gray;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 /**Mobile Phone ***/
