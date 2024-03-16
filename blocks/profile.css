@@ -24,7 +24,7 @@
 }
 
 .profile__title {
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
@@ -34,6 +34,7 @@
 }
 
 .profile__edit-button {
+  border: 1px solid #fff;
   background: transparent;
   background-image: url("../images/Vector\ \(3\).svg");
   background-repeat: no-repeat;
@@ -44,11 +45,20 @@
   margin-left: 18px;
 }
 
+.profile__edit-button:hover {
+  border-color: gray;
+}
+
 .profile__add-button {
   background: transparent url("../images/Vector\ \(2\).svg") no-repeat center;
   width: 150px;
   height: 50px;
   margin-left: auto;
+  border: 1px solid #fff;
+}
+
+.profile__add-button:hover {
+  border-color: gray;
 }
 
 .profile__description {
@@ -62,7 +72,6 @@
 /*** Mobile ***/
 @media screen and (max-width: 320px) {
   .profile {
-    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0px;

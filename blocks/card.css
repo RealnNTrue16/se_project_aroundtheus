@@ -4,7 +4,7 @@
   margin-top: 30px;
 }
 
-.card__list {
+.cards__list {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 282px);
@@ -18,9 +18,11 @@
   flex-direction: column;
   list-style-type: none;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .card__image {
+  object-fit: cover; /* Correctly displays image at any proportion */
   width: 282px;
   height: 282px;
 }
@@ -48,9 +50,12 @@
   background: transparent url("../images/Vector\ \(4\).svg") no-repeat center;
   width: 21px;
   height: 18px;
-  padding-bottom: 30px;
-  padding-top: 31px;
+
   border: none;
+}
+
+.card__like-button:hover {
+  border-color: gray;
 }
 
 /**Mobile Phone ***/
