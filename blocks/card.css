@@ -40,7 +40,6 @@
 }
 
 .card__like-button:hover {
-  border-color: gray;
   opacity: 0.5;
   cursor: pointer;
 }
