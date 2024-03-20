@@ -31,6 +31,10 @@
   grid-area: title;
   margin: 0;
   white-space: nowrap;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 373px; /* give the element in question an appropriate max-width */
 }
 
 .profile__edit-button {
@@ -69,13 +73,16 @@
   line-height: 22px;
   grid-area: description;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 415px; /* give the element in question an appropriate max-width */
 }
 
 /*** Mobile ***/
 @media screen and (max-width: 320px) {
   .profile {
     flex-direction: column;
-    align-items: center;
     padding: 0px;
     padding-top: 42px;
   }
@@ -99,11 +106,6 @@
     line-height: 27px;
     margin-left: 40px;
     margin-top: 42px;
-
-    /**Text Overflow on Mobile **/
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
   }
 
   .profile__description {
@@ -111,11 +113,6 @@
     width: 100%;
     margin-top: 14px;
     margin-bottom: 36px;
-
-    /** Text Overflow Mobile **/
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
   }
 
   .profile__edit-button {
@@ -127,6 +124,18 @@
   .profile__add-button {
     margin: 0;
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 720px) {
+  .profile__add-button {
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .profile {
+    margin-bottom: 51px;
   }
 }
 

@@ -22,6 +22,7 @@
   padding-top: 25px;
   align-items: center;
   justify-content: space-between;
+  flex-grow: 1;
 }
 
 .card__title {
@@ -29,6 +30,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  flex-grow: 1;
 }
 
 .card__like-button {
