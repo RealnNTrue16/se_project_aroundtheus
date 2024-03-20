@@ -47,9 +47,3 @@
 }
 
 /**Mobile Phone ***/
-
-@media screen and (max-width: 320px) {
-  .card {
-    margin-top: 36px;
-  }
-}

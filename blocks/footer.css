@@ -8,13 +8,24 @@
   max-width: 318px;
 }
 
-/*** Tablet View ***/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 320px) {
   .footer {
-    /* padding-top: 67px; */
+    margin-top: 48px;
+    margin-bottom: 36px;
   }
   .footer__text {
-    margin-left: 30px;
+    font-size: 14px;
+  }
+}
+
+/*** Tablet View ***/
+@media screen and (min-width: 321px) {
+  .footer {
+    margin-bottom: 36px;
+  }
+
+  .footer__text {
+    margin-left: 19px;
   }
 }
 
