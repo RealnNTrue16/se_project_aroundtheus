@@ -2,7 +2,6 @@
 .profile {
   display: flex;
   align-items: center;
-  padding: 40px;
 }
 
 .profile__image {
@@ -131,7 +130,7 @@
   }
 }
 
-@media screen and (min-width: 321px) and (max-width: 720px) {
+@media screen and (min-width: 321px) and (max-width: 699px) {
   .profile {
     flex-wrap: wrap;
     padding: 0;
@@ -141,6 +140,7 @@
   .profile__title {
     font-size: 22px;
     margin-left: auto;
+    margin-right: auto;
   }
 
   .profile__description {
@@ -160,6 +160,12 @@
 
   .profile__add-button {
     margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .profile__edit-button {
+    margin-right: 10px;
   }
 }
 
