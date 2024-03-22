@@ -36,5 +36,6 @@
 
   .footer__text {
     font-size: 18px;
+    margin-left: 0;
   }
 }
