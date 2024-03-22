@@ -83,7 +83,7 @@
   .profile {
     flex-direction: column;
     padding: 0px;
-    padding-top: 42px;
+    font-size: 14px;
     margin-bottom: 36px;
   }
 
