@@ -33,4 +33,8 @@
   .footer {
     margin-bottom: 60px;
   }
+
+  .footer__text {
+    font-size: 18px;
+  }
 }
