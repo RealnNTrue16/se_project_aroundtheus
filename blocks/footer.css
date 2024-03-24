@@ -1,11 +1,13 @@
 .footer {
   margin-top: 67px;
+  margin-bottom: 60px;
 }
 
 .footer__text {
   margin: 0;
   color: #545454;
   max-width: 318px;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 320px) {
@@ -15,27 +17,5 @@
   }
   .footer__text {
     font-size: 14px;
-  }
-}
-
-/*** Tablet View ***/
-@media screen and (min-width: 321px) {
-  .footer {
-    margin-bottom: 36px;
-  }
-
-  .footer__text {
-    margin-left: 19px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .footer {
-    margin-bottom: 60px;
-  }
-
-  .footer__text {
-    font-size: 18px;
-    margin-left: 0;
   }
 }

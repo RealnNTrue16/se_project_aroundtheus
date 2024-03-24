@@ -3,22 +3,12 @@
 .header {
   padding-top: 45px;
   border-bottom: 1px solid rgb(84 84 84 / 0.7);
+  padding-bottom: 41px;
+  margin-bottom: 41px;
 }
 
 .header__image {
   border-radius: 5px;
-}
-
-@media screen and (max-width: 320px) {
-  .header {
-    padding: 0;
-    width: 100%;
-    margin-top: 28px;
-    margin-bottom: 42px;
-  }
-  .header__image {
-    max-width: 126px;
-  }
 }
 
 @media screen and (max-width: 780px) {
@@ -29,9 +19,15 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (max-width: 320px) {
   .header {
-    margin-bottom: 41px;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  .header__image {
+    max-width: 126px;
   }
 }
+
 /******End Header CSS **********/
