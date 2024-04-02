@@ -22,6 +22,7 @@
   margin: auto;
   border-radius: 10px;
   padding: 36px;
+  box-sizing: border-box;
 }
 
 .modal__close {
@@ -36,6 +37,10 @@
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
+}
+
+.modal__close:hover {
+  opacity: 0.6;
 }
 
 .modal__heading {
