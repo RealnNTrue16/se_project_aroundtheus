@@ -33,11 +33,12 @@ let initialCards = [
   },
 ];
 //Add Modal
+//Declare Vars
 let profileEditButton = document.querySelector("#profile__edit-button");
-console.log(profileEditButton);
+//console.log(profileEditButton);
 
 let profileModal = document.querySelector("#profile__edit-modal");
-console.log(profileModal);
+//console.log(profileModal);
 
 let profileTitle = document.querySelector(".profile__title");
 let profileDescription = document.querySelector(".profile__description");
@@ -45,6 +46,7 @@ let profileTitleInput = document.querySelector("#profile__title-input");
 let profileDescriptionInput = document.querySelector(
   "#profile__description-input"
 );
+let profileEditForm = profileModal.querySelector(".modal__form");
 
 function handleClick() {
   profileTitleInput.value = profileTitle.textContent;
@@ -58,7 +60,7 @@ profileEditButton.addEventListener("click", handleClick);
 
 //Close Modal
 let modalCloseButton = document.querySelector("#modal__close-button");
-console.log(modalCloseButton);
+//console.log(modalCloseButton);
 
 let closeModal = document.querySelector("#profile__edit-modal");
 
@@ -67,3 +69,13 @@ function handleModalClose() {
 }
 
 modalCloseButton.addEventListener("click", handleModalClose);
+
+function handleModalSubmit(evnt) {
+  evnt.preventDefault();
+  console.log("Works!");
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  handleModalClose();
+}
+
+profileEditForm.addEventListener("submit", handleModalSubmit);
