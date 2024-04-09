@@ -39,7 +39,17 @@ console.log(profileEditButton);
 let profileModal = document.querySelector("#profile__edit-modal");
 console.log(profileModal);
 
+let profileTitle = document.querySelector(".profile__title");
+let profileDescription = document.querySelector(".profile__description");
+let profileTitleInput = document.querySelector("#profile__title-input");
+let profileDescriptionInput = document.querySelector(
+  "#profile__description-input"
+);
+
 function handleClick() {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+
   profileModal.classList.add("modal__open");
 }
 
