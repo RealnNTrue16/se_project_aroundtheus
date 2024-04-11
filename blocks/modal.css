@@ -10,7 +10,7 @@
   padding: 0 19px;
 }
 
-.modal__open {
+.modal_open {
   display: flex;
   align-items: center;
   justify-content: center;

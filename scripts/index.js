@@ -55,11 +55,11 @@ let cardTemplate =
 let cardListElement = document.querySelector(".cards__list");
 
 //FUNCTIONS
-function handleClick() {
+function openProfileModal() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 
-  profileModal.classList.add("modal__open");
+  profileModal.classList.add("modal_open");
 }
 
 function handleModalSubmit(evnt) {
@@ -71,7 +71,7 @@ function handleModalSubmit(evnt) {
 }
 
 function handleModalClose() {
-  closeModal.classList.remove("modal__open");
+  closeModal.classList.remove("modal_open");
 }
 
 function getCardElement(cardData) {
@@ -96,7 +96,7 @@ function getCardElement(cardData) {
 }
 
 //EVENT LISTENERS
-profileEditButton.addEventListener("click", handleClick);
+profileEditButton.addEventListener("click", openProfileModal);
 
 modalCloseButton.addEventListener("click", handleModalClose);
 
