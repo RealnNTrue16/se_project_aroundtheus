@@ -84,4 +84,10 @@
   .modal__container {
     max-width: 282px;
   }
+
+  .modal__close {
+    right: 10px;
+    width: 26px;
+    height: 26px;
+  }
 }
