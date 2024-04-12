@@ -80,14 +80,19 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 425px) {
   .modal__container {
     max-width: 282px;
   }
 
   .modal__close {
-    right: 10px;
+    left: calc(100% - 25px);
+    bottom: calc(100% + 13px);
     width: 26px;
     height: 26px;
+  }
+
+  .modal__heading {
+    font-size: 18px;
   }
 }
