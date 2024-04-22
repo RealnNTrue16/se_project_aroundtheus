@@ -40,7 +40,9 @@ let profileEditButton = document.querySelector("#profile__edit-button");
 let profileModal = document.querySelector("#profile__edit-modal");
 //console.log(profileModal);
 
-let modalCloseButton = document.querySelector("#modal__close-button");
+let addCardModal = document.querySelector("#card__add-modal");
+
+let profileModalCloseButton = profileModal.querySelector(".modal__close");
 
 let profileTitle = document.querySelector(".profile__title");
 let profileDescription = document.querySelector(".profile__description");
@@ -54,12 +56,22 @@ let cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 let cardListElement = document.querySelector(".cards__list");
 
-//FUNCTIONS
-function openProfileModal() {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+//Add Card Modal
+let addNewCardButton = document.querySelector(".profile__add-button");
+let addCardModalCloseButton = addCardModal.querySelector(".modal__close");
+console.log(addCardModalCloseButton);
+//End Add Card Modal
 
-  profileModal.classList.add("modal_open");
+//FUNCTIONS
+//function openProfileModal() {
+//profileTitleInput.value = profileTitle.textContent;
+//profileDescriptionInput.value = profileDescription.textContent;
+
+// profileModal.classList.add("modal_open");
+//}
+
+function openProfileModal(modal) {
+  modal.classList.add("modal_open");
 }
 
 function handleModalSubmit(evnt) {
@@ -70,7 +82,7 @@ function handleModalSubmit(evnt) {
   handleModalClose();
 }
 
-function handleModalClose() {
+function handleModalClose(modal) {
   closeModal.classList.remove("modal_open");
 }
 
@@ -78,7 +90,7 @@ function getCardElement(cardData) {
   // 'card data' is an argument for InitialCards obj
   //Clone the template and store it in a card element
   let cardElement = cardTemplate.cloneNode(true);
-  console.log(cardElement);
+  //console.log(cardElement);
   //access card title and image and store them in variables
   let cardImageElement = cardElement.querySelector(".card__image");
   let cardTitleElement = cardElement.querySelector(".card__title");
@@ -96,11 +108,23 @@ function getCardElement(cardData) {
 }
 
 //EVENT LISTENERS
-profileEditButton.addEventListener("click", openProfileModal);
-
-modalCloseButton.addEventListener("click", handleModalClose);
+//Profile Modal
+profileEditButton.addEventListener("click", () =>
+  openProfileModal(profileModal)
+);
+profileModalCloseButton.addEventListener("click", () =>
+  handleModalClose(profileModal)
+);
 
 profileEditForm.addEventListener("submit", handleModalSubmit);
+
+//Add New Card Modal
+addNewCardButton.addEventListener("click", () =>
+  openProfileModal(addCardModal)
+);
+addCardModalCloseButton.addEventListener("click", () =>
+  handleModalClose(addCardModal)
+);
 
 //Iterate thru initialCards Object using 'forEach' or a for loop
 initialCards.forEach((cardData) => {
