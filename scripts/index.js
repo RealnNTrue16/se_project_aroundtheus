@@ -32,18 +32,11 @@ let initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-//Add Modal
-//Declare Vars
+//Add Modals
+//Declare Profile Modal Variables
 let profileEditButton = document.querySelector("#profile__edit-button");
-//console.log(profileEditButton);
-
 let profileModal = document.querySelector("#profile__edit-modal");
-//console.log(profileModal);
-
-let addCardModal = document.querySelector("#card__add-modal");
-
 let profileModalCloseButton = profileModal.querySelector(".modal__close");
-
 let profileTitle = document.querySelector(".profile__title");
 let profileDescription = document.querySelector(".profile__description");
 let profileTitleInput = document.querySelector("#profile__title-input");
@@ -51,15 +44,17 @@ let profileDescriptionInput = document.querySelector(
   "#profile__description-input"
 );
 let profileEditForm = profileModal.querySelector(".modal__form");
-let closeModal = document.querySelector("#profile__edit-modal");
+////////
+
 let cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 let cardListElement = document.querySelector(".cards__list");
 
 //Add Card Modal
+let addCardModal = document.querySelector("#card__add-modal");
 let addNewCardButton = document.querySelector(".profile__add-button");
 let addCardModalCloseButton = addCardModal.querySelector(".modal__close");
-console.log(addCardModalCloseButton);
+//console.log(addCardModalCloseButton);
 //End Add Card Modal
 
 //FUNCTIONS
@@ -70,7 +65,7 @@ console.log(addCardModalCloseButton);
 // profileModal.classList.add("modal_open");
 //}
 
-function openProfileModal(modal) {
+function openModal(modal) {
   modal.classList.add("modal_open");
 }
 
@@ -83,7 +78,7 @@ function handleModalSubmit(evnt) {
 }
 
 function handleModalClose(modal) {
-  closeModal.classList.remove("modal_open");
+  modal.classList.remove("modal_open");
 }
 
 function getCardElement(cardData) {
@@ -109,19 +104,14 @@ function getCardElement(cardData) {
 
 //EVENT LISTENERS
 //Profile Modal
-profileEditButton.addEventListener("click", () =>
-  openProfileModal(profileModal)
-);
+profileEditButton.addEventListener("click", () => openModal(profileModal));
 profileModalCloseButton.addEventListener("click", () =>
   handleModalClose(profileModal)
 );
-
 profileEditForm.addEventListener("submit", handleModalSubmit);
 
 //Add New Card Modal
-addNewCardButton.addEventListener("click", () =>
-  openProfileModal(addCardModal)
-);
+addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
   handleModalClose(addCardModal)
 );
