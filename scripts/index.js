@@ -104,7 +104,12 @@ function getCardElement(cardData) {
 
 //EVENT LISTENERS
 //Profile Modal
-profileEditButton.addEventListener("click", () => openModal(profileModal));
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  openModal(profileModal);
+});
+
 profileModalCloseButton.addEventListener("click", () =>
   handleModalClose(profileModal)
 );
