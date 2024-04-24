@@ -37,11 +37,14 @@
   background: transparent url("../images/Vector\ \(4\).svg") no-repeat center;
   width: 23px;
   height: 18px;
-
   border: none;
 }
 
 .card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+.card__like-button_active {
+  background-image: url("../images/like-active.svg") no-repeat center;
 }
