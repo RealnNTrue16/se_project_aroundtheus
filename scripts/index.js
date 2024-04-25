@@ -94,10 +94,15 @@ function getCardElement(cardData) {
   // 'card data' is an argument for InitialCards obj
   //Clone the template and store it in a card element
   let cardElement = cardTemplate.cloneNode(true);
-  //console.log(cardElement);
+
   //access card title and image and store them in variables
   let cardImageElement = cardElement.querySelector(".card__image");
   let cardTitleElement = cardElement.querySelector(".card__title");
+
+  let likeButton = cardElement.querySelector(".card__like-button");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle(".card__like-button_active");
+  });
 
   //set the path to the image to the link field of the object
   cardImageElement.src = cardData.link;

@@ -40,11 +40,11 @@
   border: none;
 }
 
+.card__like-button_active {
+  background-image: url("../images/like-active.svg") no-repeat center;
+}
+
 .card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
-}
-
-.card__like-button_active {
-  background-image: url("../images/like-active.svg") no-repeat center;
 }
