@@ -101,7 +101,7 @@ function getCardElement(cardData) {
 
   let likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle(".card__like-button_active");
+    likeButton.classList.toggle("card__like-button_active");
   });
 
   //set the path to the image to the link field of the object
@@ -140,12 +140,4 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 //Iterate thru initialCards Object using 'forEach' or a for loop
 initialCards.forEach((cardData) => {
   renderCard(cardData, cardListElement);
-});
-
-let likeButtons = document.querySelectorAll(".card__like-button");
-likeButtons.forEach((likeButton) => {
-  likeButton.addEventListener("click", () => {
-    console.log("hi");
-    likeButton.classList.toggle("card__like-button_active");
-  });
 });
