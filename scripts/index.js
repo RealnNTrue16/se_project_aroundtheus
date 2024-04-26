@@ -58,6 +58,11 @@ let cardTitleInput = addCardModal.querySelector("#card__title-input");
 let cardURLInput = addCardModal.querySelector("#card__description-input");
 //End Add Card Modal Vars
 
+//Preview Image Modal
+let previewImageModal = document.querySelector("#preview__modal");
+let previewImageModalCloseButton =
+  previewImageModal.querySelector(".modal__close");
+
 //FUNCTIONS
 
 function openModal(modal) {
@@ -102,15 +107,26 @@ function getCardElement(cardData) {
   //find delete button
   let deleteButton = cardElement.querySelector(".card__delete");
   deleteButton.addEventListener("click", () => {
-    console.log("Hey");
     cardElement.remove();
   });
 
   //Add Like Button Feature While cards are Rendered
   let likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", () => {
-    console.log("Working");
     likeButton.classList.toggle("card__like-button_active");
+  });
+
+  //cardImage click listener
+  cardImageElement.addEventListener("click", () => {
+    let modalImage = previewImageModal.querySelector(".modal__image");
+    let modalImageHeading = previewImageModal.querySelector(
+      ".modal__image_heading"
+    );
+    modalImage.src = cardData.link;
+    modalImageHeading.textContent = cardData.name;
+
+    console.log(modalImage);
+    openModal(previewImageModal);
   });
 
   //set the path to the image to the link field of the object
@@ -145,6 +161,11 @@ addCardModalCloseButton.addEventListener("click", () =>
 );
 
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
+
+//Close preview Modal
+previewImageModalCloseButton.addEventListener("click", () => {
+  handleModalClose(previewImageModal);
+});
 
 //Iterate thru initialCards Object using 'forEach' or a for loop
 initialCards.forEach((cardData) => {
