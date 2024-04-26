@@ -48,3 +48,18 @@
   opacity: 0.5;
   cursor: pointer;
 }
+
+.card__delete {
+  background: transparent url("../images/Trash.svg") no-repeat center;
+  border: none;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  width: 18px;
+  height: 19px;
+}
+
+.card__delete:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

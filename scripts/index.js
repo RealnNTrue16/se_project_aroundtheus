@@ -99,8 +99,17 @@ function getCardElement(cardData) {
   let cardImageElement = cardElement.querySelector(".card__image");
   let cardTitleElement = cardElement.querySelector(".card__title");
 
+  //find delete button
+  let deleteButton = cardElement.querySelector(".card__delete");
+  deleteButton.addEventListener("click", () => {
+    console.log("Hey");
+    cardElement.remove();
+  });
+
+  //Add Like Button Feature While cards are Rendered
   let likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", () => {
+    console.log("Working");
     likeButton.classList.toggle("card__like-button_active");
   });
 
