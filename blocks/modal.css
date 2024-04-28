@@ -8,12 +8,21 @@
   z-index: 999;
   display: none;
   padding: 0 19px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 .modal_open {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
+
+  /* Animation */
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 .modal__container {
