@@ -6,17 +6,17 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: none;
+  display: flex;
   padding: 0 19px;
 
   /* Initial Animation State */
+
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
 .modal_open {
-  display: flex;
   align-items: center;
   justify-content: center;
 
