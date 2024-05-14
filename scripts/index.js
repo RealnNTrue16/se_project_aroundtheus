@@ -81,8 +81,13 @@ function handleAddCardFormSubmit(evnt) {
   evnt.preventDefault();
   // console.log("Works!");
   const name = cardTitleInput.value;
+  const alt = cardTitleInput.value;
   const link = cardURLInput.value;
-  renderCard({ name, link }, cardListElement);
+  renderCard({ name, link, alt });
+
+  // Clear Inputs
+  cardTitleInput.value = "";
+  cardURLInput.value = "";
   handleModalClose(addCardModal);
 }
 
@@ -169,5 +174,5 @@ previewImageModalCloseButton.addEventListener("click", () => {
 
 //Iterate thru initialCards Object using 'forEach' or a for loop
 initialCards.forEach((cardData) => {
-  renderCard(cardData, cardListElement);
+  renderCard(cardData);
 });
