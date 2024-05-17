@@ -129,6 +129,7 @@ function getCardElement(cardData) {
     );
     modalImage.src = cardData.link;
     modalImageHeading.textContent = cardData.name;
+    cardImageElement.alt = cardData.name;
 
     console.log(modalImage);
     openModal(previewImageModal);
