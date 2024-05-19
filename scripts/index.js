@@ -177,3 +177,4 @@ previewImageModalCloseButton.addEventListener("click", () => {
 initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
+//
