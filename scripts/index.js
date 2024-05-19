@@ -129,7 +129,7 @@ function getCardElement(cardData) {
     );
     modalImage.src = cardData.link;
     modalImageHeading.textContent = cardData.name;
-    cardImageElement.alt = cardData.name;
+    modalImage.alt = cardData.name;
 
     console.log(modalImage);
     openModal(previewImageModal);
@@ -177,4 +177,3 @@ previewImageModalCloseButton.addEventListener("click", () => {
 initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
-//
