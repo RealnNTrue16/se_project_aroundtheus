@@ -6,7 +6,7 @@ function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   console.log(errorMessageEl);
   inputEl.classList.add(inputErrorClass); //Add inputErrorClass from config obj to input || {inputErrorClass} = conig.inputErrorClass
-  errorMessageEl.textContent = input.validationMessage; //set error text to validationMessage browser property
+  errorMessageEl.textContent = inputEl.validationMessage; //set error text to validationMessage browser property
   errorMessageEl.classList.add(errorClass); //Add Fade in animation for error
 }
 
@@ -39,7 +39,6 @@ function toggleButtonState(
       foundInvalid = true; //set foundInvalid to true
     }
   });
-
   if (foundInvalid) {
     //if foundInvalid is true
     submitButton.classList.add(inactiveButtonClass); //add disabled button class for visual effect
