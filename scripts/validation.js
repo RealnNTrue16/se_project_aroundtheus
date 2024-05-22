@@ -1,7 +1,10 @@
 // enabling validation by calling enableValidation()
 // pass all the settings on call
 
-function showInputError(formEl, input, config) {}
+function showInputError(formEl, input, config) {
+  const errorMessage = formEl.querySelector(`#${input.id}-error`);
+  console.log(errorMessage);
+}
 
 function checkInputValidity(formEl, input, config) {
   if (!input.validity.valid) {
@@ -15,7 +18,6 @@ function setEventListeners(formEl, config) {
   //find all inputs in a form
   const { inputSelector } = config; // {inputSelector} is the same as const inputSelector = config.inputSelector
   const inputElements = [...formEl.querySelectorAll(inputSelector)];
-  console.log(inputElements);
 
   //for each input add an event listener and call checkInput
   inputElements.forEach((input) => {
@@ -31,7 +33,7 @@ function enableValidation(config) {
   const formElements = [...document.querySelectorAll(config.formSelector)]; //Make an array of each form element using array and spread operator
   formElements.forEach((formEl) => {
     //for each form element
-    console.log(formEl);
+
     formEl.addEventListener("submit", (e) => {
       //add event listener
       e.preventDefault(); //prevent page reload
