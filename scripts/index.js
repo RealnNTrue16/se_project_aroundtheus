@@ -44,6 +44,8 @@ const profileDescriptionInput = document.querySelector(
   "#profile__description-input"
 );
 const profileEditForm = profileModal.querySelector(".modal__form");
+const profileModalOverlay = document.querySelector("#profile__edit-modal");
+console.log(profileModalOverlay);
 
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -59,19 +61,17 @@ const cardURLInput = addCardModal.querySelector("#card__description-input");
 //End Add Card Modal Vars
 
 //Modal Overlay
-const modalOverlay = document.querySelector(".modal");
-console.log(modalOverlay);
+const addCardModalOverlay = document.querySelector("#card__add-modal");
+console.log(addCardModalOverlay);
 
 //Preview Image Modal
 const previewImageModal = document.querySelector("#preview__modal");
 const previewImageModalCloseButton =
   previewImageModal.querySelector(".modal__close");
 
-//FUNCTIONS
+const previewImageModalOverlay = document.querySelector("#preview__modal");
 
-function handleOverlayClose(e) {
-  console.log("POP");
-}
+//FUNCTIONS
 
 function openModal(modal) {
   modal.classList.add("modal_open");
@@ -168,21 +168,31 @@ profileModalCloseButton.addEventListener("click", () =>
 );
 profileEditForm.addEventListener("submit", handleProfileModalSubmit);
 
+profileModalOverlay.addEventListener("click", () => {
+  handleModalClose(profileModal);
+});
+
 //Add New Card Modal
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
-addCardModalCloseButton.addEventListener("click", () =>
-  handleModalClose(addCardModal)
-);
+
+addCardModalCloseButton.addEventListener("click", () => {
+  handleModalClose(addCardModal);
+});
 
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
+addCardModalOverlay.addEventListener("click", () => {
+  handleModalClose(addCardModal);
+});
 
 //Close preview Modal
 previewImageModalCloseButton.addEventListener("click", () => {
   handleModalClose(previewImageModal);
 });
+previewImageModalOverlay.addEventListener("click", () => {
+  handleModalClose(previewImageModal);
+});
 
-//Close Modal Overlay
-modalOverlay.addEventListener("click", handleOverlayClose);
+///////////
 
 //Iterate thru initialCards Object using 'forEach' or a for loop
 initialCards.forEach((cardData) => {
