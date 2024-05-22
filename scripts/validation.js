@@ -27,10 +27,14 @@ function checkInputValidity(formEl, inputEl, config) {
   }
 }
 
-function toggleButtonState(inputEl, submitButton, config) {
-  console.log(inputEl);
+function toggleButtonState(
+  inputElements,
+  submitButton,
+  { inactiveButtonClass }
+) {
+  console.log(inputElements);
   let foundInvalid = false; //set var to false to begin
-  inputEl.forEach((input) => {
+  inputElements.forEach((input) => {
     if (!input.validity.valid) {
       //if any input is not valid
       foundInvalid = true; //set foundInvalid to true
@@ -59,7 +63,7 @@ function setEventListeners(formEl, config) {
     inputEl.addEventListener("input", (e) => {
       console.log(inputEl);
       checkInputValidity(formEl, inputEl, config);
-      toggleButtonState(inputEl, submitButton, config);
+      toggleButtonState(inputEl, submitButton);
     });
   });
 }
