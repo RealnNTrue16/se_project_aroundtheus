@@ -56,7 +56,11 @@
             id="profile__title-input"
             placeholder="name"
             class="modal__form-input popup__input"
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span class="popup__error">error</span>
           <input
             type="text"
             name="description"

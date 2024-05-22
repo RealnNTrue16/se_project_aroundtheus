@@ -1,15 +1,25 @@
 // enabling validation by calling enableValidation()
 // pass all the settings on call
 
+function showInputError() {}
+
+function checkInputValidity(formEl, input, config) {
+  if (!input.validity.valid) {
+    showInputError(formEl, input, config);
+  }
+}
+
 function setEventListeners(formEl, config) {
   //find all inputs in a form
   const { inputSelector } = config; // {inputSelector} is the same as const inputSelector = config.inputSelector
   const inputElements = [...formEl.querySelectorAll(inputSelector)];
   console.log(inputElements);
 
+  //for each input add an event listener and call checkInput
   inputElements.forEach((input) => {
-    input.addEventListener("input", () => {
-      console.log("Wokring");
+    input.addEventListener("input", (e) => {
+      console.log(input.validationMessage);
+      checkInputValidity(formEl, input, config);
     });
   });
 }
