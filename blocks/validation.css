@@ -1,5 +1,6 @@
 .popup__error {
   color: red;
+  size: 10px;
 }
 
 .popup__form {
