@@ -58,12 +58,20 @@ const cardTitleInput = addCardModal.querySelector("#card__title-input");
 const cardURLInput = addCardModal.querySelector("#card__description-input");
 //End Add Card Modal Vars
 
+//Modal Overlay
+const modalOverlay = document.querySelector(".modal");
+console.log(modalOverlay);
+
 //Preview Image Modal
 const previewImageModal = document.querySelector("#preview__modal");
 const previewImageModalCloseButton =
   previewImageModal.querySelector(".modal__close");
 
 //FUNCTIONS
+
+function handleOverlayClose(e) {
+  console.log("POP");
+}
 
 function openModal(modal) {
   modal.classList.add("modal_open");
@@ -172,6 +180,9 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 previewImageModalCloseButton.addEventListener("click", () => {
   handleModalClose(previewImageModal);
 });
+
+//Close Modal Overlay
+modalOverlay.addEventListener("click", handleOverlayClose);
 
 //Iterate thru initialCards Object using 'forEach' or a for loop
 initialCards.forEach((cardData) => {
