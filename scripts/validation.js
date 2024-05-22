@@ -32,7 +32,6 @@ function toggleButtonState(
   submitButton,
   { inactiveButtonClass }
 ) {
-  console.log(inputElements);
   let foundInvalid = false; //set var to false to begin
   inputElements.forEach((input) => {
     if (!input.validity.valid) {
@@ -63,7 +62,7 @@ function setEventListeners(formEl, config) {
     inputEl.addEventListener("input", (e) => {
       console.log(inputEl);
       checkInputValidity(formEl, inputEl, config);
-      toggleButtonState(inputEl, submitButton);
+      toggleButtonState(inputEl, submitButton, config);
     });
   });
 }
