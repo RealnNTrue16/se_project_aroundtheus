@@ -2,7 +2,6 @@
 // pass all the settings on call
 
 function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
-  console.log(inputEl);
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   console.log(errorMessageEl);
   inputEl.classList.add(inputErrorClass); //Add inputErrorClass from config obj to input || {inputErrorClass} = conig.inputErrorClass
@@ -12,14 +11,13 @@ function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
 
 function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  console.log(inputEl);
+
   inputEl.classList.remove(inputErrorClass); //Add inputErrorClass from config obj to input || {inputErrorClass} = conig.inputErrorClass
   errorMessageEl.textContent = " "; //reset error text to nothing
   errorMessageEl.classList.remove(errorClass); //Add Fade in animation for error
 }
 
 function checkInputValidity(formEl, inputEl, config) {
-  console.log(inputEl);
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, config);
   } else {
@@ -59,7 +57,6 @@ function setEventListeners(formEl, config) {
   //console.log(inputElements);
   inputElements.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
-      console.log(inputEl);
       checkInputValidity(formEl, inputEl, config);
       toggleButtonState(inputElements, submitButton, config);
     });
