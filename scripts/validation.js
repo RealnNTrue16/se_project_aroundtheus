@@ -1,9 +1,33 @@
 // enabling validation by calling enableValidation()
 // pass all the settings on call
 
-function toggleButtonState(input, submitButton, config) {
+function showInputError(formEl, input, { inputErrorClass, errorClass }) {
+  const errorMessageEl = formEl.querySelector(`#${input.id}-error`);
+  console.log(errorMessageEl);
+  input.classList.add(inputErrorClass); //Add inputErrorClass from config obj to input || {inputErrorClass} = conig.inputErrorClass
+  errorMessageEl.textContent = input.validationMessage; //set error text to validationMessage browser property
+  errorMessageEl.classList.add(errorClass); //Add Fade in animation for error
+}
+
+function hideInputError(formEl, input, { inputErrorClass, errorClass }) {
+  const errorMessageEl = formEl.querySelector(`#${input.id}-error`);
+
+  input.classList.remove(inputErrorClass); //Add inputErrorClass from config obj to input || {inputErrorClass} = conig.inputErrorClass
+  errorMessageEl.textContent = " "; //reset error text to nothing
+  errorMessageEl.classList.remove(errorClass); //Add Fade in animation for error
+}
+
+function checkInputValidity(formEl, input, config) {
+  if (!input.validity.valid) {
+    showInputError(formEl, input, config);
+  } else {
+    hideInputError(formEl, input, config);
+  }
+}
+
+function toggleButtonState(input, submitButton, { inactiveButtonClass }) {
   let foundInvalid = false; //set var to false to begin
-  input.forEach((input) => {
+  input.forEach((inputEl) => {
     if (!input.validity.valid) {
       //if any input is not valid
       foundInvalid = true; //set foundInvalid to true
@@ -21,39 +45,14 @@ function toggleButtonState(input, submitButton, config) {
   }
 }
 
-function showInputError(formEl, input, { inputErrorClass, errorClass }) {
-  const errorMessageEl = formEl.querySelector(`#${input.id}-error`);
-  console.log(errorMessageEl);
-  input.classList.add(inputErrorClass); //Add inputErrorClass from config obj to input || {inputErrorClass} = conig.inputErrorClass
-  errorMessageEl.textContent = input.validationMessage; //set error text to validationMessage browser property
-  errorMessageEl.classList.add(errorClass); //Add Fade in animation for error
-}
-
-function hideInputError(formEl, input, { inputErrorClass, errorClass }) {
-  const errorMessageEl = formEl.querySelector(`#${input.id}-error`);
-  console.log(errorMessageEl);
-  input.classList.remove(inputErrorClass); //Add inputErrorClass from config obj to input || {inputErrorClass} = conig.inputErrorClass
-  errorMessageEl.textContent = " "; //reset error text to nothing
-  errorMessageEl.classList.remove(errorClass); //Add Fade in animation for error
-}
-
-function checkInputValidity(formEl, input, config) {
-  if (!input.validity.valid) {
-    showInputError(formEl, input, config);
-  } else {
-    hideInputError(formEl, input, config);
-  }
-}
-
 function setEventListeners(formEl, config) {
   //find all inputs in a form
   const { inputSelector } = config; // {inputSelector} is the same as const inputSelector = config.inputSelector
   const inputElements = [...formEl.querySelectorAll(inputSelector)]; //get all inputs in formEl using spread operator and array
-  const submitButton = formEl.querySelector(".modal__button"); //get all modal submit buttons
+  const submitButton = formEl.querySelector(".popup__button"); //get all modal submit buttons
   //for each input add an event listener and call checkInput and toggleButtonState
   inputElements.forEach((input) => {
     input.addEventListener("input", (e) => {
-      console.log(input.validationMessage);
       checkInputValidity(formEl, input, config);
       toggleButtonState(input, submitButton);
     });
@@ -81,7 +80,7 @@ function enableValidation(config) {
     //disable button
     //if inputs are valid
     //enable button
-    //reset eror messages
+    //reset error messages
   });
 }
 

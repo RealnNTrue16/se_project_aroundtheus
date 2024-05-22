@@ -1,6 +1,10 @@
 .popup__error {
   color: red;
-  size: 10px;
+  width: 16px;
+  height: 12px;
+  top: 5px;
+  right: 194px;
+  opacity: 1;
 }
 
 .popup__form {
@@ -10,9 +14,14 @@
 }
 
 .popup__button {
+  opacity: 1;
+}
+
+.popup__button:hover {
 }
 
 .popup__button-disabled {
+  opacity: 0.2;
 }
 
 .popup__input_type_error {
