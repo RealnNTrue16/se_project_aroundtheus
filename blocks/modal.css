@@ -113,7 +113,7 @@
   size: 12px;
 }
 
-.popup__error {
+.modal__popup__error {
   color: red;
   width: 16px;
   height: 12px;
@@ -122,27 +122,27 @@
   opacity: 1;
 }
 
-.popup__form {
+.modal__popup__form {
 }
 
-.popup__input {
+.modal__popup__input {
 }
 
-.popup__button {
+.modal__popup__button {
   opacity: 1;
 }
 
-.popup__button:hover {
+.modal__popup__button:hover {
 }
 
-.popup__button_disabled {
+.modal__popup__button_disabled {
   opacity: 0.2;
 }
 
-.popup__input_type_error {
+.modal__popup__input_type_error {
 }
 
-.popup__error_visible {
+.modal__popup__error_visible {
 }
 
 @media screen and (max-width: 425px) {
