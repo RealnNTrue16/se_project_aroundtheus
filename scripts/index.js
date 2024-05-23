@@ -77,7 +77,6 @@ function handleOverlayClick(evt) {
   console.log(evt);
   if (evt.target.classList.contains("modal")) {
     //If target object has class 'modal'
-
     handleModalClose(evt.target); //Call modal close function on target object
   }
 }
@@ -205,7 +204,6 @@ previewImageModalCloseButton.addEventListener("click", () => {
   handleModalClose(previewImageModal);
 });
 previewImageModal.addEventListener("click", handleOverlayClick);
-previewImageModal.addEventListener("keydown", handleEscKeyClose);
 
 ///////////
 

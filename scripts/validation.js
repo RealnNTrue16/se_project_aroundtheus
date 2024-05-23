@@ -31,12 +31,13 @@ function toggleButtonState(
   { inactiveButtonClass }
 ) {
   let foundInvalid = false; //set var to false to begin
-  inputElements.forEach((input) => {
-    if (!input.validity.valid) {
-      //if any input is not valid
-      foundInvalid = true; //set foundInvalid to true
-    }
-  });
+  const checkFormValidity = (inputs) =>
+    inputs.every((input) => input.validity.valid);
+
+  const toggleButtonState = (inputEls, submitButton, option) => {
+    const isFormValid = checkFormValidity(inputEls);
+  };
+
   if (foundInvalid) {
     //if foundInvalid is true
     submitButton.classList.add(inactiveButtonClass); //add disabled button class for visual effect
@@ -48,13 +49,19 @@ function toggleButtonState(
   }
 }
 
+function handleInputEvent(formEl, inputEl, config) {
+  checkInputValidity(formEl, inputEl, config);
+  const { inputSelector, submitButtonSelector } = config;
+  const inputElements = [...formEl.querySelectorAll(inputSelector)]; //get all inputs in formEl using spread operator to turn them into an array
+  const submitButton = formEl.querySelector(submitButtonSelector); //get all modal submit buttons
+  toggleButtonState(inputElements, submitButton, config); //call this function to change button sate
+}
+
 function setEventListeners(formEl, config) {
   //find all inputs in a form
   const { inputSelector } = config; // {inputSelector} is the same as const inputSelector = config.inputSelector
   const inputElements = [...formEl.querySelectorAll(inputSelector)]; //get all inputs in formEl using spread operator and array
-  const submitButton = formEl.querySelector(submitButtonSelector); //get all modal submit buttons
   //for each input add an event listener and call checkInput and toggleButtonState
-  //console.log(inputElements);
   inputElements.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, config);
