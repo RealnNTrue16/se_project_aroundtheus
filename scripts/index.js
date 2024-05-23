@@ -76,8 +76,9 @@ const previewImageModalOverlay = document.querySelector("#preview__modal");
 function handleOverlayClick(evt) {
   console.log(evt);
   if (evt.target.classList.contains("modal")) {
-    const modal = document.querySelector(".modal_open");
-    handleModalClose(evt.target);
+    //If target object has class 'modal'
+    const modal = document.querySelector(".modal_open"); // let modal = modal_open class
+    handleModalClose(evt.target); //Call modal close function on target object
   }
 }
 
