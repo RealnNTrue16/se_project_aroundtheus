@@ -52,7 +52,7 @@ function setEventListeners(formEl, config) {
   //find all inputs in a form
   const { inputSelector } = config; // {inputSelector} is the same as const inputSelector = config.inputSelector
   const inputElements = [...formEl.querySelectorAll(inputSelector)]; //get all inputs in formEl using spread operator and array
-  const submitButton = formEl.querySelector(".popup__button"); //get all modal submit buttons
+  const submitButton = formEl.querySelector(submitButtonSelector); //get all modal submit buttons
   //for each input add an event listener and call checkInput and toggleButtonState
   //console.log(inputElements);
   inputElements.forEach((inputEl) => {
