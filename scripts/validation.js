@@ -89,12 +89,12 @@ function enableValidation(config) {
 }
 
 const config = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
+  formSelector: ".modal__popup__form",
+  inputSelector: ".modal__popup__input",
+  submitButtonSelector: ".modal__popup__button",
+  inactiveButtonClass: "modal__popup__button_disabled",
+  inputErrorClass: "modal__popup__input_type_error",
+  errorClass: "modal__popup__error_visible",
 };
 
 enableValidation(config);
