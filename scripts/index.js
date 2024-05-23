@@ -81,8 +81,18 @@ function handleOverlayClick(evt) {
   }
 }
 
+function handleEscKeyClose(evt) {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_open");
+    if (openModal) {
+      handleModalClose(openModal);
+    }
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_open");
+  document.addEventListener("keydown", handleEscKeyClose);
 }
 
 function handleProfileModalSubmit(evnt) {
@@ -194,6 +204,7 @@ previewImageModalCloseButton.addEventListener("click", () => {
   handleModalClose(previewImageModal);
 });
 previewImageModal.addEventListener("click", handleOverlayClick);
+previewImageModal.addEventListener("keydown", handleEscKeyClose);
 
 ///////////
 
