@@ -11,7 +11,6 @@ function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
 
 function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-
   inputEl.classList.remove(inputErrorClass); //Add inputErrorClass from config obj to input || {inputErrorClass} = conig.inputErrorClass
   errorMessageEl.textContent = " "; //reset error text to nothing
   errorMessageEl.classList.remove(errorClass); //Add Fade in animation for error
@@ -30,22 +29,15 @@ function toggleButtonState(
   submitButton,
   { inactiveButtonClass }
 ) {
-  let foundInvalid = false; //set var to false to begin
-  const checkFormValidity = (inputs) =>
-    inputs.every((input) => input.validity.valid);
-
-  const toggleButtonState = (inputEls, submitButton, option) => {
-    const isFormValid = checkFormValidity(inputEls);
-  };
-
-  if (foundInvalid) {
-    //if foundInvalid is true
-    submitButton.classList.add(inactiveButtonClass); //add disabled button class for visual effect
-    submitButton.disabled = true; //disable button
+  const isFormValid = inputElements.every((input) => input.validity.valid); //check if each input is valid
+  if (!isFormValid) {
+    //if NOT valid
+    submitButton.classList.add(inactiveButtonClass); // Add disabled button class
+    submitButton.disabled = true; // Disable button
   } else {
-    //if foundInvalid is false
-    submitButton.classList.remove(inactiveButtonClass); //remove disabled button class
-    submitButton.disabled = false; //enable button
+    //If valid
+    submitButton.classList.remove(inactiveButtonClass); // Remove disabled button class
+    submitButton.disabled = false; // Enable button
   }
 }
 
