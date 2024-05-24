@@ -49,13 +49,13 @@
       <div class="modal__container">
         <button class="modal__close" id="modal__close-button"></button>
         <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form popup__form">
+        <form class="modal__form modal__popup__form">
           <input
             type="text"
             name="title"
             id="profile__title-input"
             placeholder="name"
-            class="modal__form-input popup__input"
+            class="modal__form-input modal__popup__input"
             minlength="2"
             maxlength="40"
             required
@@ -66,7 +66,7 @@
             name="description"
             id="profile__description-input"
             placeholder="description"
-            class="modal__form-input popup__input"
+            class="modal__form-input modal__popup__input"
             minlength="2"
             maxlength="200"
             required
@@ -75,7 +75,7 @@
             class="popup__error"
             id="profile__description-input-error"
           ></span>
-          <button class="modal__button popup__button" type="submit">
+          <button class="modal__button modal__popup__button" type="submit">
             Save
           </button>
         </form>
@@ -86,13 +86,13 @@
       <div class="modal__container">
         <button class="modal__close" id="modal__close-button"></button>
         <p class="modal__heading">New Place</p>
-        <form class="modal__form popup__form" id="add-card-form">
+        <form class="modal__form modal__popup__form" id="add-card-form">
           <input
             type="text"
             name="title"
             id="card__title-input"
             placeholder="Title"
-            class="modal__form-input popup__input"
+            class="modal__form-input modal__popup__input"
             minlength="1"
             maxlength="30"
             required
@@ -103,12 +103,12 @@
             name="url"
             id="card__description-input"
             placeholder="Image URL"
-            class="modal__form-input popup__input"
+            class="modal__form-input modal__popup__input"
             required
           />
           <span class="popup__error" id="card__description-input-error"></span>
           <button
-            class="modal__button modal__popup__button modal__popup__button_disabled"
+            class="modal__button modal__popup__button popup__button_disabled"
             type="submit"
             disabled
           >
