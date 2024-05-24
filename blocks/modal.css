@@ -135,6 +135,10 @@
 .modal__popup__input {
 }
 
+.modal__popup__input_type_error {
+  border-bottom: 1px solid red;
+}
+
 .modal__popup__button {
   opacity: 1;
 }
