@@ -48,6 +48,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
+  pointer-events: none;
 }
 
 .modal__close:hover {
@@ -69,11 +70,12 @@
   height: 27px;
   border: 1px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 }
 
 .modal__form-input:last-of-type {
-  margin-bottom: 48px;
+  margin-top: 25px;
+  margin-bottom: 5px;
 }
 
 .modal__button {
@@ -83,6 +85,7 @@
   background-color: #000;
   border-radius: 2px;
   font-family: "Inter", Arial, sans-serif;
+  margin-top: 43px;
 }
 
 .modal__button:hover {
@@ -144,14 +147,9 @@
   cursor: default;
 }
 
-.modal__button_disabled:hover {
-}
-
-.modal__popup__input_type_error {
-}
-
 .modal__popup__error_visible {
   color: red;
+  margin-bottom: 25px;
 }
 
 @media screen and (max-width: 425px) {
