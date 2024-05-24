@@ -8,6 +8,8 @@
   z-index: 999;
   display: flex;
   padding: 0 19px;
+  align-items: center;
+  justify-content: center;
 
   /* Initial Animation State */
 
@@ -17,13 +19,11 @@
 }
 
 .modal_open {
-  align-items: center;
-  justify-content: center;
-
   /* Animation */
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
+  pointer-events: all;
 }
 
 .modal__container {
@@ -90,6 +90,10 @@
   cursor: pointer;
 }
 
+.modal__button:disabled {
+  cursor: default;
+}
+
 .modal__container_preview {
   position: relative;
   margin: auto;
@@ -137,6 +141,10 @@
 
 .modal__popup__button_disabled {
   opacity: 0.2;
+  cursor: default;
+}
+
+.modal__button_disabled:hover {
 }
 
 .modal__popup__input_type_error {
