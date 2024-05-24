@@ -103,10 +103,6 @@ function handleAddCardFormSubmit(evnt) {
 
 function handleModalClose(modal) {
   modal.classList.remove("modal_open");
-  modal.removeEventListener("click", handleOverlayClick);
-  modal.removeEventListener("keydown", handleOverlayClick);
-  modal.addEventListener("click", handleOverlayClick);
-  modal.addEventListener("keydown", handleOverlayClick);
 }
 
 function renderCard(cardData) {
