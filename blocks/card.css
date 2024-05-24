@@ -11,6 +11,7 @@
   object-fit: cover; /* Correctly displays image at any proportion */
   width: 282px;
   height: 282px;
+  cursor: pointer;
 }
 
 .card__text {

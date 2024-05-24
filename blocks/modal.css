@@ -48,7 +48,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .modal__close:hover {
@@ -88,13 +88,9 @@
   margin-top: 43px;
 }
 
-.modal__button:hover {
+.modal__button:hover:not(:disabled) {
   opacity: 0.8;
   cursor: pointer;
-}
-
-.modal__button:disabled {
-  cursor: default;
 }
 
 .modal__container_preview {
@@ -111,7 +107,7 @@
 }
 
 .modal__image_heading {
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   font-weight: 400px;
   line-height: 15px;
   max-width: 291px;
