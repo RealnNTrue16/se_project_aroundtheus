@@ -103,6 +103,7 @@ function handleAddCardFormSubmit(evnt) {
 
 function handleModalClose(modal) {
   modal.classList.remove("modal_open");
+  //Keydown removed
 }
 
 function renderCard(cardData) {
