@@ -58,13 +58,15 @@ function setEventListeners(formEl, config) {
 }
 
 function enableValidation(config) {
-  const formElements = [...document.querySelectorAll(config.formSelector)];
+  const formElements = [...document.querySelectorAll(config.formSelector)]; //get all forms
   //console.log(formElements);
   formElements.forEach((formEl) => {
+    //for Each for
     formEl.addEventListener("submit", (e) => {
-      e.preventDefault();
+      //add submit event listener
+      e.preventDefault(); //prevent page reload
     });
-    setEventListeners(formEl, config);
+    setEventListeners(formEl, config); //call setEventListener function with each form and config classes passed in
   });
 }
 
