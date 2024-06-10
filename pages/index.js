@@ -116,14 +116,19 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageElement = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__title");
+
+  //Delete Button
   const deleteButton = cardElement.querySelector(".card__delete");
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
   });
+  ////////////////////
+  //like Button
   const likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
+  ////////////////////////////////
   cardImageElement.addEventListener("click", () => {
     const modalImage = previewImageModal.querySelector(".modal__image");
     const modalImageHeading = previewImageModal.querySelector(
@@ -134,7 +139,8 @@ function getCardElement(cardData) {
     modalImage.alt = cardData.name;
     openModal(previewImageModal);
   });
-  cardImageElement.src = cardData.link;
+  ///////////////////////////
+  cardImageElement.src = cardData.link; //
   cardImageElement.alt = cardData.name;
   cardTitleElement.textContent = cardData.name;
   return cardElement;
