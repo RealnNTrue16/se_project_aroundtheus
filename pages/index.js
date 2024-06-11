@@ -29,10 +29,11 @@ const initialCards = [
   },
 ];
 
-//loop over initilCards array and create a new card
+//loop over initilCards array and create a new card for the card class
 initialCards.forEach((cardData) => {
   const cardElement = new Card(cardData);
   console.log(cardElement);
+  cardElement.viewCards();
 });
 
 // Add Modals
@@ -71,7 +72,6 @@ const previewImageModalCloseButton =
 const previewImageModalOverlay = document.querySelector("#preview__modal");
 
 // FUNCTIONS
-
 function handleOverlayClick(evt) {
   if (evt.target.classList.contains("modal")) {
     handleModalClose(evt.target);
@@ -133,10 +133,10 @@ function getCardElement(cardData) {
   });
   ////////////////////
   //like Button
-  const likeButton = cardElement.querySelector(".card__like-button");
+  /*  const likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
-  });
+  }); */
   ////////////////////////////////
   cardImageElement.addEventListener("click", () => {
     const modalImage = previewImageModal.querySelector(".modal__image");
