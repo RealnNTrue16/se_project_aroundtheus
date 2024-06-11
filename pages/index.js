@@ -1,3 +1,6 @@
+//Imports
+import Card from "../components/card.js";
+
 // Create an array of objects
 const initialCards = [
   {
@@ -25,6 +28,12 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+//loop over initilCards array and create a new card
+initialCards.forEach((cardData) => {
+  const cardElement = new Card(cardData);
+  console.log(cardElement);
+});
 
 // Add Modals
 // Declare Profile Modal Variables
