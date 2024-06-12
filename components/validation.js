@@ -46,13 +46,14 @@ function handleInputEvent(formEl, inputEl, config) {
 }
 
 function setEventListeners(formEl, config) {
-  const { inputSelector, submitButtonSelector } = config;
-  const inputElements = [...formEl.querySelectorAll(inputSelector)];
+  const { inputSelector, submitButtonSelector } = config; //get InputSelector and SubmitButtonSelector from config
+  const inputElements = [...formEl.querySelectorAll(inputSelector)]; //get all inputElements
   inputElements.forEach((inputEl) => {
+    //for each input Element
     inputEl.addEventListener("input", (e) => {
-      checkInputValidity(formEl, inputEl, config);
+      checkInputValidity(formEl, inputEl, config); //check Input Validity
       const submitButton = formEl.querySelector(submitButtonSelector); // Changed from popup to modal
-      toggleButtonState(inputElements, submitButton, config);
+      toggleButtonState(inputElements, submitButton, config); //Check inpyt button state
     });
   });
 }

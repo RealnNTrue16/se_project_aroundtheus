@@ -12,7 +12,7 @@ export default class FormValidator {
 
   enableValidation() {
     // Public Method that will be called
-    console.log("Checking...");
+
     this._form.addEventListener("submit", (e) => {
       e.preventDefault(); // Prevent Page Reload
     });
@@ -71,5 +71,14 @@ export default class FormValidator {
       this._submitButton.classList.remove(this._config.inactiveButtonClass);
       this._submitButton.disabled = false;
     }
+  }
+
+  //Method to reset form
+  _resetForm() {
+    this._form.reset(); //reset form
+    this._inputElements.forEach((inputEl) => {
+      this._hideInputError(inputEl);
+    });
+    this._toggleButtonState(); //Reset Button
   }
 }

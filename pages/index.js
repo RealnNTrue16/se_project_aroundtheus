@@ -119,9 +119,11 @@ function handleAddCardFormSubmit(evnt) {
   const name = cardTitleInput.value;
   const alt = cardTitleInput.value;
   const link = cardURLInput.value;
-  renderCard({ name, link, alt });
+  renderCardClass({ name, link, alt });
   cardTitleInput.value = "";
   cardURLInput.value = "";
+  addCardFormElement.reset(); //Reset Form fields
+  addNewCardValidator._resetForm(); //reset form and disable submit button
   handleModalClose(addCardModal);
 }
 
