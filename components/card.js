@@ -1,10 +1,10 @@
 //Classes
 export default class Card {
-  constructor(data, cardSelector, handleOverlayClick) {
+  constructor(data, cardSelector, handleImageClick) {
     this._name = data.name; //set card name
     this._link = data.link; //set card image
-    this._cardSelector = cardSelector; //set
-    this._handleOverlayClick = handleOverlayClick;
+    this._cardSelector = cardSelector; //set card template selector
+    this._handleImageClick = handleImageClick;
   }
 
   //methods
@@ -33,7 +33,6 @@ export default class Card {
     cardImageElement.src = this._link;
     cardImageElement.alt = this._name;
     cardTitleElement.textContent = this._name;
-    console.log(cardTitleElement);
   }
 
   _setEventListeners() {
@@ -47,6 +46,11 @@ export default class Card {
     const deleteButton = this._cardElement.querySelector(".card__delete");
     deleteButton.addEventListener("click", () => {
       this._handleCardDelete();
+    });
+    //overlay listener
+    const cardImageElement = this._cardElement.querySelector(".card__image");
+    cardImageElement.addEventListener("click", () => {
+      this._handleImageClick(this._name, this._link);
     });
   }
 

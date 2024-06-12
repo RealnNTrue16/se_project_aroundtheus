@@ -1,5 +1,16 @@
 //Imports
 import Card from "../components/card.js";
+import FormValidator from "../components/formValidator.js";
+
+//Config settings
+const config = {
+  formSelector: ".modal__popup__form", // Updated
+  inputSelector: ".modal__popup__input", // Updated
+  submitButtonSelector: ".modal__popup__button", // Updated
+  inactiveButtonClass: "modal__popup__button_disabled", // Updated
+  inputErrorClass: "modal__popup__input_type_error", // Updated
+  errorClass: "modal__popup__error_visible", // Updated
+};
 
 // Create an array of objects
 const initialCards = [
@@ -28,8 +39,6 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-
-//loop over initilCards array and create a new card for the card class
 
 // Add Modals
 // Declare Profile Modal Variables
@@ -73,6 +82,17 @@ function handleOverlayClick(evt) {
   }
 }
 
+function handleImageClick(link, name) {
+  const modalImage = previewImageModal.querySelector(".modal__image");
+  const modalImageHeading = previewImageModal.querySelector(
+    ".modal__image_heading"
+  );
+  modalImage.src = link;
+  modalImage.alt = name;
+  modalImageHeading.textContent = name;
+  openModal(previewImageModal);
+}
+
 function handleEscKeyClose(evt) {
   if (evt.key === "Escape") {
     const openModal = document.querySelector(".modal_open");
@@ -112,7 +132,7 @@ function handleModalClose(modal) {
 }
 
 function renderCardClass(cardData) {
-  const card = new Card(cardData, "#card-template", handleOverlayClick);
+  const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = card.viewCards();
   cardListElement.prepend(cardElement);
 }
@@ -186,3 +206,13 @@ previewImageModal.addEventListener("click", handleOverlayClick);
 initialCards.forEach((cardData) => {
   renderCardClass(cardData);
 });
+
+//Profile Modal Validation
+//New Instance of FormValidator Class
+const profileValidator = new FormValidator(config, profileEditForm); //Pass in Profile Edit form to be validated and config classes
+profileValidator.enableValidation(); //Call enableValidation
+
+//AddNewCArd Valdation
+//New Instance of FormValidator Class
+const addNewCardValidator = new FormValidator(config, addCardFormElement); //Pass in
+addNewCardValidator.enableValidation();
