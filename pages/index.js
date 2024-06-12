@@ -136,23 +136,14 @@ function renderCardClass(cardData) {
   const cardElement = card.viewCards();
   cardListElement.prepend(cardElement);
 }
-
+/* 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageElement = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__title");
 
   //Delete Button
-  /*  const deleteButton = cardElement.querySelector(".card__delete");
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  }); */
-  ////////////////////
-  //like Button
-  /*  const likeButton = cardElement.querySelector(".card__like-button");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  }); */
+
   ////////////////////////////////
   cardImageElement.addEventListener("click", () => {
     const modalImage = previewImageModal.querySelector(".modal__image");
@@ -170,7 +161,7 @@ function getCardElement(cardData) {
   cardTitleElement.textContent = cardData.name;
   return cardElement;
 }
-
+ */
 // EVENT LISTENERS
 
 // Profile Modal
@@ -212,7 +203,7 @@ initialCards.forEach((cardData) => {
 const profileValidator = new FormValidator(config, profileEditForm); //Pass in Profile Edit form to be validated and config classes
 profileValidator.enableValidation(); //Call enableValidation
 
-//AddNewCArd Valdation
+//AddNewCard Valdation
 //New Instance of FormValidator Class
 const addNewCardValidator = new FormValidator(config, addCardFormElement); //Pass in
 addNewCardValidator.enableValidation();
