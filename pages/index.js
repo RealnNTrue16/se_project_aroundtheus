@@ -30,11 +30,6 @@ const initialCards = [
 ];
 
 //loop over initilCards array and create a new card for the card class
-initialCards.forEach((cardData) => {
-  const cardElement = new Card(cardData);
-  console.log(cardElement);
-  cardElement.viewCards();
-});
 
 // Add Modals
 // Declare Profile Modal Variables
@@ -116,8 +111,9 @@ function handleModalClose(modal) {
   document.removeEventListener("keydown", handleEscKeyClose);
 }
 
-function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
+function renderCardClass(cardData) {
+  const card = new Card(cardData, "#card-template", handleOverlayClick);
+  const cardElement = card.viewCards();
   cardListElement.prepend(cardElement);
 }
 
@@ -127,10 +123,10 @@ function getCardElement(cardData) {
   const cardTitleElement = cardElement.querySelector(".card__title");
 
   //Delete Button
-  const deleteButton = cardElement.querySelector(".card__delete");
+  /*  const deleteButton = cardElement.querySelector(".card__delete");
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
-  });
+  }); */
   ////////////////////
   //like Button
   /*  const likeButton = cardElement.querySelector(".card__like-button");
@@ -188,5 +184,5 @@ previewImageModal.addEventListener("click", handleOverlayClick);
 
 // Render Initial Cards
 initialCards.forEach((cardData) => {
-  renderCard(cardData);
+  renderCardClass(cardData);
 });

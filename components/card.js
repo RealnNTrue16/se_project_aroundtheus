@@ -11,15 +11,17 @@ export default class Card {
   //Method to get card template
   viewCards() {
     //get the card template
-    this._cardElement =
-      document.querySelector("#card-template").content.firstElementChild;
-    console.log(this._cardElement);
+    const cardTemplate = document
+      .querySelector(this._cardSelector)
+      .content.firstElementChild.cloneNode(true);
+    this._cardElement = cardTemplate;
 
-    //
     this._createCard();
-    //set event listeners
+
+    //call set event listeners
     this._setEventListeners();
     //return card
+    return this._cardElement;
   }
 
   //method to create card
@@ -28,10 +30,10 @@ export default class Card {
     const cardTitleElement = this._cardElement.querySelector(".card__title"); //get title
 
     //set card values
-    /*     this._cardElement.src = data.link;
-    this._cardElement.alt = data.name;
-    this._cardElement.textContent = data.name;
-    return card; */
+    cardImageElement.src = this._link;
+    cardImageElement.alt = this._name;
+    cardTitleElement.textContent = this._name;
+    console.log(cardTitleElement);
   }
 
   _setEventListeners() {
@@ -43,10 +45,9 @@ export default class Card {
     });
     //get card delete button
     const deleteButton = this._cardElement.querySelector(".card__delete");
-    this._cardElement.addEventListener("click", () => {
-      //set listener
+    deleteButton.addEventListener("click", () => {
       this._handleCardDelete();
-    }); //set delete button listener
+    });
   }
 
   //method to handle card like
