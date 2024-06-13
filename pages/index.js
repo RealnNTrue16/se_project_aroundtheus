@@ -209,3 +209,4 @@ profileValidator.enableValidation(); //Call enableValidation
 //New Instance of FormValidator Class
 const addNewCardValidator = new FormValidator(config, addCardFormElement); //Pass in
 addNewCardValidator.enableValidation();
+//////
