@@ -82,7 +82,7 @@ function handleOverlayClick(evt) {
   }
 }
 
-function handleImageClick(link, name) {
+function handleImageClick(name, link) {
   const modalImage = previewImageModal.querySelector(".modal__image");
   const modalImageHeading = previewImageModal.querySelector(
     ".modal__image_heading"
