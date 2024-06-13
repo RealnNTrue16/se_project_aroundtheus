@@ -123,7 +123,7 @@ function handleAddCardFormSubmit(evnt) {
   cardTitleInput.value = "";
   cardURLInput.value = "";
   addCardFormElement.reset(); //Reset Form fields
-  addNewCardValidator._resetForm(); //reset form and disable submit button
+  addNewCardValidator.resetForm(); //reset form and disable submit button
   handleModalClose(addCardModal);
 }
 
@@ -135,7 +135,7 @@ function handleModalClose(modal) {
 
 function renderCardClass(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.viewCards();
+  const cardElement = card.viewCard();
   cardListElement.prepend(cardElement);
 }
 /* 

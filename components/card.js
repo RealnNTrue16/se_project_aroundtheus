@@ -9,7 +9,7 @@ export default class Card {
 
   //methods
   //Method to get card template
-  viewCards() {
+  viewCard() {
     //get the card template
     const cardTemplate = document
       .querySelector(this._cardSelector)

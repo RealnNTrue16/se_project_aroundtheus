@@ -59,11 +59,17 @@ export default class FormValidator {
     errorMessageEl.classList.remove(this._config.errorClass);
   }
 
+  //method to check if form is valid
+  _checkFormValidity() {
+    const isFormValid = this._inputElements.every(
+      (input) => input.validity.valid //for every input, check if valid
+    );
+    return isFormValid; //return isFormValid to use in ToggleButtonState
+  }
+
   // Method to Change Button State
   _toggleButtonState() {
-    const isFormValid = this._inputElements.every(
-      (input) => input.validity.valid
-    );
+    const isFormValid = this._checkFormValidity(); //reassign isFormValid to the value of CheckFormValidity
     if (!isFormValid) {
       this._submitButton.classList.add(this._config.inactiveButtonClass);
       this._submitButton.disabled = true;
@@ -74,7 +80,7 @@ export default class FormValidator {
   }
 
   //Method to reset form
-  _resetForm() {
+  resetForm() {
     this._form.reset(); //reset form
     this._inputElements.forEach((inputEl) => {
       this._hideInputError(inputEl);
