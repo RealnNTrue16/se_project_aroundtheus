@@ -2,6 +2,11 @@
 import "../pages/index.css";
 import Card from "./card.js";
 import FormValidator from "./formValidator.js";
+import Section from "./section.js";
+import userInfo from "./userInfo.js";
+import popupWithForm from "./popupWithForm.js";
+import popupWithImage from "./popupWithImage.js";
+
 
 //Config settings
 const config = {
@@ -181,6 +186,20 @@ profileModalCloseButton.addEventListener("click", () =>
 profileModal.addEventListener("click", handleOverlayClick);
 profileEditForm.addEventListener("submit", handleProfileModalSubmit);
 
+//Profile Form Class
+const profilePopup = new popupWithForm(
+  "#profile__edit-modal",
+  handleProfileModalSubmit
+);
+profilePopup.setEventListeners(); 
+
+//UserInfo class 
+const userInfo = new userInfo({name: ".profile__title", job: ".profile__description" }); 
+userInfo.setUserInfo({
+  name: profileTitleInput.value, 
+  job: profileDescriptionInput.value
+});
+
 // Add New Card Modal
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
@@ -188,7 +207,16 @@ addCardModalCloseButton.addEventListener("click", () =>
 );
 addCardModal.addEventListener("click", handleOverlayClick);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
-//console.log(addCardFormElement);
+
+//New Card Class
+const newCardPopup = new popupWithForm(
+  "#card__add-modal",
+  handleAddCardFormSubmit
+);
+newCardPopup.setEventListeners(); 
+
+//popupWithImage class 
+new popupImage = new popupWithImage("#preview__modal");
 
 // Close Preview Modal
 previewImageModalCloseButton.addEventListener("click", () =>
