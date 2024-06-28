@@ -80,7 +80,7 @@ const previewImageModalCloseButton =
   previewImageModal.querySelector(".modal__close");
 const previewImageModalOverlay = document.querySelector("#preview__modal");
 
-////////////////CLASS DECLARATIONS///////////////
+//////////////////////////////////////////////////// CLASS DECLARATIONS /////////////////////////////////////////////////////
 ////
 //Profile Class Declarations
 const user = new userInfo({
@@ -106,15 +106,17 @@ const newCardPopup = new popupWithForm(
   handleAddCardFormSubmit
 );
 newCardPopup.setEventListeners();
+///
 //////Preview Image popup class
-//popupWithImage class
+///popupWithImage class
 const popupImage = new popupWithImage("#preview__modal");
+popupImage.setEventListeners();
 
 //////////////////////////////////////////// FUNCTIONS //////////////////////////////////////////////////////
 function handleOverlayClick(evt) {
-  if (evt.target.classList.contains("modal")) {
-    handleModalClose(evt.target);
-  }
+  /*  if (evt.target.classList.contains("modal")) {
+      handleModalClose(evt.target);
+  } */
 }
 
 function handleImageClick(name, link) {
@@ -163,11 +165,11 @@ function handleAddCardFormSubmit(evnt) {
   handleModalClose(addCardModal);
 }
 
-function handleModalClose(modal) {
-  modal.classList.remove("modal_open");
+/* function handleModalClose(modal) {
+    modal.classList.remove("modal_open");
   //Keydown removed
   document.removeEventListener("keydown", handleEscKeyClose);
-}
+} */
 
 function renderCardClass(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
@@ -228,9 +230,9 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 ////////////////////////////////////////////// PREVIEW MODAL /////////////////////////////////////////////////////////
 // Close Preview Modal
-previewImageModalCloseButton.addEventListener("click", () =>
+/* previewImageModalCloseButton.addEventListener("click", () =>
   handleModalClose(previewImageModal)
-);
+); */
 previewImageModal.addEventListener("click", handleOverlayClick);
 
 // Render Initial Cards
