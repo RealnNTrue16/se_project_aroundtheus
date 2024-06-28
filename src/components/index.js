@@ -80,7 +80,37 @@ const previewImageModalCloseButton =
   previewImageModal.querySelector(".modal__close");
 const previewImageModalOverlay = document.querySelector("#preview__modal");
 
-// FUNCTIONS
+////////////////CLASS DECLARATIONS///////////////
+////
+//Profile Class Declarations
+const user = new userInfo({
+  name: ".profile__title",
+  job: ".profile__description",
+});
+//get user info
+const newUser = user.getUserInfo();
+console.log(newUser);
+////
+//Forms Class Declarations
+////
+//Profile Form Class
+const profilePopup = new popupWithForm(
+  "#profile__edit-modal",
+  handleProfileModalSubmit
+);
+profilePopup.setEventListeners();
+
+//New Card Class
+const newCardPopup = new popupWithForm(
+  "#card__add-modal",
+  handleAddCardFormSubmit
+);
+newCardPopup.setEventListeners();
+//////Preview Image popup class
+//popupWithImage class
+const popupImage = new popupWithImage("#preview__modal");
+
+//////////////////////////////////////////// FUNCTIONS //////////////////////////////////////////////////////
 function handleOverlayClick(evt) {
   if (evt.target.classList.contains("modal")) {
     handleModalClose(evt.target);
@@ -88,14 +118,15 @@ function handleOverlayClick(evt) {
 }
 
 function handleImageClick(name, link) {
-  const modalImage = previewImageModal.querySelector(".modal__image");
+  popupImage.openPopup({ name, link });
+  /*  const modalImage = previewImageModal.querySelector(".modal__image");
   const modalImageHeading = previewImageModal.querySelector(
     ".modal__image_heading"
   );
   modalImage.src = link;
   modalImage.alt = name;
   modalImageHeading.textContent = name;
-  openModal(previewImageModal);
+  openModal(previewImageModal); */
 }
 
 function handleEscKeyClose(evt) {
@@ -169,24 +200,14 @@ function getCardElement(cardData) {
   return cardElement;
 }
  */
-// EVENT LISTENERS
+///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////
 
-// Profile Modal
+//////////////////////////////////////////// Profile Modal ////////////////////////////////////////////////////////////
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileModal);
 });
-
-//get profile info using userInfo class
-const user = new userInfo({
-  name: ".profile__title",
-  job: ".profile__description",
-});
-
-//get inital user Info
-const newUser = user.getUserInfo();
-console.log(newUser);
 
 // Profile Modal Close Functions
 profileModalCloseButton.addEventListener("click", () =>
@@ -194,32 +215,18 @@ profileModalCloseButton.addEventListener("click", () =>
 );
 profileModal.addEventListener("click", handleOverlayClick);
 profileEditForm.addEventListener("submit", handleProfileModalSubmit);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Profile Form Class
-const profilePopup = new popupWithForm(
-  "#profile__edit-modal",
-  handleProfileModalSubmit
-);
-profilePopup.setEventListeners();
-
-// Add New Card Modal
+///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
   handleModalClose(addCardModal)
 );
 addCardModal.addEventListener("click", handleOverlayClick);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//New Card Class
-const newCardPopup = new popupWithForm(
-  "#card__add-modal",
-  handleAddCardFormSubmit
-);
-newCardPopup.setEventListeners();
-
-//popupWithImage class
-const popupImage = new popupWithImage("#preview__modal");
-
+////////////////////////////////////////////// PREVIEW MODAL /////////////////////////////////////////////////////////
 // Close Preview Modal
 previewImageModalCloseButton.addEventListener("click", () =>
   handleModalClose(previewImageModal)
@@ -230,6 +237,8 @@ previewImageModal.addEventListener("click", handleOverlayClick);
 initialCards.forEach((cardData) => {
   renderCardClass(cardData);
 });
+
+/////////////////////////////////////////////// VALIDATION /////////////////////////////////////////////////////////////
 
 //Profile Modal Validation
 //New Instance of FormValidator Class
