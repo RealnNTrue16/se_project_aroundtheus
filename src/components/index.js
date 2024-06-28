@@ -178,6 +178,16 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileModal);
 });
 
+//get profile info using userInfo class
+const user = new userInfo({
+  name: ".profile__title",
+  job: ".profile__description",
+});
+
+//get inital user Info
+const newUser = user.getUserInfo();
+console.log(newUser);
+
 // Profile Modal Close Functions
 profileModalCloseButton.addEventListener("click", () =>
   handleModalClose(profileModal)
@@ -191,16 +201,6 @@ const profilePopup = new popupWithForm(
   handleProfileModalSubmit
 );
 profilePopup.setEventListeners();
-
-//UserInfo class
-const user = new userInfo({
-  name: ".profile__title",
-  job: ".profile__description",
-});
-user.setUserInfo({
-  name: profileTitleInput.value,
-  job: profileDescriptionInput.value,
-});
 
 // Add New Card Modal
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
