@@ -7,7 +7,6 @@ import userInfo from "./userInfo.js";
 import popupWithForm from "./popupWithForm.js";
 import popupWithImage from "./popupWithImage.js";
 
-
 //Config settings
 const config = {
   formSelector: ".modal__popup__form", // Updated
@@ -191,13 +190,16 @@ const profilePopup = new popupWithForm(
   "#profile__edit-modal",
   handleProfileModalSubmit
 );
-profilePopup.setEventListeners(); 
+profilePopup.setEventListeners();
 
-//UserInfo class 
-const userInfo = new userInfo({name: ".profile__title", job: ".profile__description" }); 
-userInfo.setUserInfo({
-  name: profileTitleInput.value, 
-  job: profileDescriptionInput.value
+//UserInfo class
+const user = new userInfo({
+  name: ".profile__title",
+  job: ".profile__description",
+});
+user.setUserInfo({
+  name: profileTitleInput.value,
+  job: profileDescriptionInput.value,
 });
 
 // Add New Card Modal
@@ -213,10 +215,10 @@ const newCardPopup = new popupWithForm(
   "#card__add-modal",
   handleAddCardFormSubmit
 );
-newCardPopup.setEventListeners(); 
+newCardPopup.setEventListeners();
 
-//popupWithImage class 
-new popupImage = new popupWithImage("#preview__modal");
+//popupWithImage class
+const popupImage = new popupWithImage("#preview__modal");
 
 // Close Preview Modal
 previewImageModalCloseButton.addEventListener("click", () =>
