@@ -6,12 +6,14 @@ export default class Section {
   }
 
   renderItems() {
+    //method of render items to page
     this._item.forEach((item) => {
       this._renderer(item);
     });
   }
 
   addItem(element) {
+    //method to add one item
     this._selector.append(element);
   }
 }

@@ -1,5 +1,5 @@
 import Popup from "./popup.js";
-
+//handles profile and add card forms
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super({ popupSelector });

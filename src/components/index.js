@@ -81,6 +81,12 @@ const previewImageModalCloseButton =
 const previewImageModalOverlay = document.querySelector("#preview__modal");
 
 //////////////////////////////////////////////////// CLASS DECLARATIONS /////////////////////////////////////////////////////
+//Instantiate Section Class
+const section = new Section(
+  { item: initialCards, renderer: renderCardClass },
+  "#cards__list"
+);
+
 ////Instantiate UserInfo
 const user = new userInfo({
   name: ".profile__title",
@@ -162,12 +168,12 @@ function handleAddCardFormSubmit(evnt) {
   const name = cardTitleInput.value; //set card name
   const alt = cardTitleInput.value; //set card alt text
   const link = cardURLInput.value; //set card image link
-  renderCardClass({ name, link, alt }); //call renderCard tp append card to page
+  renderCardClass({ name, link, alt }); //call renderCard to append card to page
   cardTitleInput.value = ""; //clear name input field after rendering
   cardURLInput.value = ""; //clear link input field after rendering
+  newCardPopup.close(); //close popup
   /*  addCardFormElement.reset(); */ //Reset Form fields
   /* addNewCardValidator.resetForm();  */ //reset form and disable submit button
-  newCardPopup.close(); //close popup
   /*  handleModalClose(addCardModal); */
 }
 
@@ -233,8 +239,10 @@ profileEditForm.addEventListener("submit", handleProfileModalSubmit);
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
-addCardModalCloseButton.addEventListener("click", () =>
-  handleModalClose(addCardModal)
+addCardModalCloseButton.addEventListener(
+  "click",
+  () => newCardPopup.closePopup()
+  /* handleModalClose(addCardModal) */
 );
 addCardModal.addEventListener("click", handleOverlayClick);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
@@ -247,10 +255,16 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 ); */
 previewImageModal.addEventListener("click", handleOverlayClick);
 
+////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
 // Render Initial Cards
-initialCards.forEach((cardData) => {
+/* initialCards.forEach((cardData) => {
   renderCardClass(cardData);
-});
+}); */
+
+//Render All Cards using Section Class
+section.renderItems(); //call renderItems of section class to render cards
+
+//render new card
 
 /////////////////////////////////////////////// VALIDATION /////////////////////////////////////////////////////////////
 
@@ -264,4 +278,3 @@ profileValidator.enableValidation(); //Call enableValidation
 const addNewCardValidator = new FormValidator(config, addCardFormElement); //Pass in
 addNewCardValidator.enableValidation();
 /////////////////////
-//BUGS: ESC Key Not Working
