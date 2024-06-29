@@ -105,8 +105,8 @@ function openModal(modal) {
   document.addEventListener("keydown", handleEscKeyClose); */
 }
 
-function handleProfileModalSubmit(evnt) {
-  evnt.preventDefault();
+function handleProfileModalSubmit(profileData) {
+  console.log(profileData);
   const name = profileTitleInput.value; //set name var to work with userInfo class
   const job = profileDescriptionInput.value; //set job var to work with userInfo class
   user.setUserInfo({ name, job }); //set user information
@@ -120,8 +120,7 @@ function handleProfileModalSubmit(evnt) {
   /*   handleModalClose(profileModal); */
 }
 
-function handleAddCardFormSubmit(evnt) {
-  evnt.preventDefault(); //prevent page reload
+function handleAddCardFormSubmit() {
   const name = cardTitleInput.value; //set card name
   const alt = cardTitleInput.value; //set card alt text
   const link = cardURLInput.value; //set card image link
@@ -191,7 +190,7 @@ profileModalCloseButton.addEventListener(
   /* handleModalClose(profileModal) */
 );
 profileModal.addEventListener("click", handleOverlayClick);
-profileEditForm.addEventListener("submit", handleProfileModalSubmit);
+/* profileEditForm.addEventListener("submit", handleProfileModalSubmit); */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
@@ -202,7 +201,7 @@ addCardModalCloseButton.addEventListener(
   /* handleModalClose(addCardModal) */
 );
 addCardModal.addEventListener("click", handleOverlayClick);
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
+/* addCardFormElement.addEventListener("submit", handleAddCardFormSubmit); */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////// PREVIEW MODAL /////////////////////////////////////////////////////////
