@@ -24,7 +24,7 @@ export default class PopupWithForm extends Popup {
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault(); //prevent page refresh
       this._handleFormSubmit(this._getInputValues()); //call handleFormSubmit
-      this._popupForm.reset(); //reset after submission
+      this._popupForm.reset(); //reset after submission and not on close
     });
   }
 
