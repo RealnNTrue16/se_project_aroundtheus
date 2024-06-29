@@ -14,17 +14,17 @@ export default class PopupWithForm extends Popup {
     const inputsObj = {}; //create empty object
     formInputs.forEach((inputEl) => {
       //forEach inputEl
-      inputsObj[inputEl.name] = inputEl.value; //set object name to inputel.name and values to inputel value
+      inputsObj[inputEl.name] = inputEl.value; //use array brackets to set inputEl name and value inside object
     });
     return inputsObj;
   }
 
   setEventListeners() {
+    super.setEventListeners();
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault(); //prevent page refresh
-      this._handleFormSubmit();
+      this._handleFormSubmit(this._getInputValues()); //call handleFormSubmit
     });
-    super.setEventListeners();
   }
 
   close() {

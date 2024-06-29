@@ -6,6 +6,7 @@ import Section from "./section.js";
 import userInfo from "./userInfo.js";
 import popupWithForm from "./popupWithForm.js";
 import popupWithImage from "./popupWithImage.js";
+import UserInfo from "./userInfo.js";
 
 //Config settings
 const config = {
@@ -81,19 +82,16 @@ const previewImageModalCloseButton =
 const previewImageModalOverlay = document.querySelector("#preview__modal");
 
 //////////////////////////////////////////////////// CLASS DECLARATIONS /////////////////////////////////////////////////////
-////
-//Profile Class Declarations
+////Instantiate UserInfo
 const user = new userInfo({
   name: ".profile__title",
   job: ".profile__description",
 });
-//get user info
-const newUser = user.getUserInfo();
-console.log(newUser);
+
 ////
 //Forms Class Declarations
 ////
-//Profile Form Class
+//Instantiate popupWithForm for Profile
 const profilePopup = new popupWithForm(
   "#profile__edit-modal",
   handleProfileModalSubmit
@@ -145,11 +143,19 @@ function openModal(modal) {
   document.addEventListener("keydown", handleEscKeyClose);
 }
 
-function handleProfileModalSubmit(evnt) {
-  evnt.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  handleModalClose(profileModal);
+function handleProfileModalSubmit() {
+  const name = profileTitleInput.value; //set name var to work with userInfo class
+  const job = profileDescriptionInput.value; //set job var to work with userInfo class
+  user.setUserInfo({ name, job }); //set user information
+  const updatedUserInfo = user.getUserInfo(); //get updated information and store in a var
+  profileTitle.textContent = updatedUserInfo.name; //set name
+  profileDescription.textContent = updatedUserInfo.job; //set job
+  profilePopup.close(); //close popup
+  /*  evnt.preventDefault(); */
+  /* OLD FUNCTION CODE */
+  /*  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value; */
+  /*   handleModalClose(profileModal); */
 }
 
 function handleAddCardFormSubmit(evnt) {
@@ -206,14 +212,20 @@ function getCardElement(cardData) {
 
 //////////////////////////////////////////// Profile Modal ////////////////////////////////////////////////////////////
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileModal);
+  const userInfo = user.getUserInfo(); //get user info
+  profileTitleInput.value = userInfo.name; //pre set name
+  profileDescriptionInput.value = userInfo.job; //pre set job
+  profilePopup.openPopup(); //open popup
+  /*  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent; */
+  /* openModal(profileModal); */
 });
 
 // Profile Modal Close Functions
-profileModalCloseButton.addEventListener("click", () =>
-  handleModalClose(profileModal)
+profileModalCloseButton.addEventListener(
+  "click",
+  () => profilePopup.closePopup()
+  /* handleModalClose(profileModal) */
 );
 profileModal.addEventListener("click", handleOverlayClick);
 profileEditForm.addEventListener("submit", handleProfileModalSubmit);

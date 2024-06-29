@@ -9,9 +9,10 @@ export default class userInfo {
       name: this._name.textContent,
       job: this._job.textContent,
     };
-  }
+  } //returns obj with info entered by user
 
   setUserInfo({ name, job }) {
+    //expects obj and sets fields with retrieved info
     this._name.textContent = name;
     this._job.textContent = job;
   }
