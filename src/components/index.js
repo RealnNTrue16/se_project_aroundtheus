@@ -6,7 +6,6 @@ import Section from "./section.js";
 import userInfo from "./userInfo.js";
 import popupWithForm from "./popupWithForm.js";
 import popupWithImage from "./popupWithImage.js";
-import UserInfo from "./userInfo.js";
 
 //Config settings
 const config = {
@@ -143,7 +142,8 @@ function openModal(modal) {
   document.addEventListener("keydown", handleEscKeyClose);
 }
 
-function handleProfileModalSubmit() {
+function handleProfileModalSubmit(evnt) {
+  evnt.preventDefault();
   const name = profileTitleInput.value; //set name var to work with userInfo class
   const job = profileDescriptionInput.value; //set job var to work with userInfo class
   user.setUserInfo({ name, job }); //set user information
@@ -151,7 +151,6 @@ function handleProfileModalSubmit() {
   profileTitle.textContent = updatedUserInfo.name; //set name
   profileDescription.textContent = updatedUserInfo.job; //set job
   profilePopup.close(); //close popup
-  /*  evnt.preventDefault(); */
   /* OLD FUNCTION CODE */
   /*  profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value; */
@@ -264,3 +263,4 @@ profileValidator.enableValidation(); //Call enableValidation
 const addNewCardValidator = new FormValidator(config, addCardFormElement); //Pass in
 addNewCardValidator.enableValidation();
 /////////////////////
+//BUGS: ESC Key Not Working, Profile Info not displaying,
