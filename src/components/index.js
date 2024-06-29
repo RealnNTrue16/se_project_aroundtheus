@@ -97,7 +97,7 @@ const profilePopup = new popupWithForm(
 );
 profilePopup.setEventListeners();
 
-//New Card Class
+//Instantiate popupWithForm for Add Card
 const newCardPopup = new popupWithForm(
   "#card__add-modal",
   handleAddCardFormSubmit
@@ -158,16 +158,17 @@ function handleProfileModalSubmit(evnt) {
 }
 
 function handleAddCardFormSubmit(evnt) {
-  evnt.preventDefault();
-  const name = cardTitleInput.value;
-  const alt = cardTitleInput.value;
-  const link = cardURLInput.value;
-  renderCardClass({ name, link, alt });
-  cardTitleInput.value = "";
-  cardURLInput.value = "";
-  addCardFormElement.reset(); //Reset Form fields
-  addNewCardValidator.resetForm(); //reset form and disable submit button
-  handleModalClose(addCardModal);
+  evnt.preventDefault(); //prevent page reload
+  const name = cardTitleInput.value; //set card name
+  const alt = cardTitleInput.value; //set card alt text
+  const link = cardURLInput.value; //set card image link
+  renderCardClass({ name, link, alt }); //call renderCard tp append card to page
+  cardTitleInput.value = ""; //clear name input field after rendering
+  cardURLInput.value = ""; //clear link input field after rendering
+  /*  addCardFormElement.reset(); */ //Reset Form fields
+  /* addNewCardValidator.resetForm();  */ //reset form and disable submit button
+  newCardPopup.close(); //close popup
+  /*  handleModalClose(addCardModal); */
 }
 
 /* function handleModalClose(modal) {
@@ -263,4 +264,4 @@ profileValidator.enableValidation(); //Call enableValidation
 const addNewCardValidator = new FormValidator(config, addCardFormElement); //Pass in
 addNewCardValidator.enableValidation();
 /////////////////////
-//BUGS: ESC Key Not Working,
+//BUGS: ESC Key Not Working
