@@ -1,8 +1,8 @@
 export default class Section {
-  constructor({ item, renderer }, selector) {
+  constructor({ item, renderer }, Modalselector) {
     this._item = item;
     this._renderer = renderer;
-    this._selector = document.querySelector(selector);
+    this._Modalselector = document.querySelector(Modalselector);
   }
 
   renderItems() {

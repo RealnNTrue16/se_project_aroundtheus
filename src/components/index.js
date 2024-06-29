@@ -73,37 +73,10 @@ const popupImage = new popupWithImage("#preview__modal");
 popupImage.setEventListeners();
 
 //////////////////////////////////////////// FUNCTIONS //////////////////////////////////////////////////////
-/* function handleOverlayClick(evt) {
-   if (evt.target.classList.contains("modal")) {
-      handleModalClose(evt.target);
-  }
-} */
 
 function handleImageClick(name, link) {
   popupImage.openPopup({ name, link });
-  /*  const modalImage = previewImageModal.querySelector(".modal__image");
-  const modalImageHeading = previewImageModal.querySelector(
-    ".modal__image_heading"
-  );
-  modalImage.src = link;
-  modalImage.alt = name;
-  modalImageHeading.textContent = name;
-  openModal(previewImageModal); */
 }
-
-/* function handleEscKeyClose(evt) {
-    if (evt.key === "Escape") {
-    const openModal = document.querySelector(".modal_open");
-    if (openModal) {
-      handleModalClose(openModal);
-    }
-  } 
-} */
-
-/* function openModal(modal) {
-   modal.classList.add("modal_open");
-  document.addEventListener("keydown", handleEscKeyClose);
-} */
 
 function handleProfileModalSubmit(profileData) {
   console.log(profileData);
@@ -114,10 +87,6 @@ function handleProfileModalSubmit(profileData) {
   profileTitle.textContent = updatedUserInfo.name; //set name
   profileDescription.textContent = updatedUserInfo.job; //set job
   profilePopup.close(); //close popup
-  /* OLD FUNCTION CODE */
-  /*  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value; */
-  /*   handleModalClose(profileModal); */
 }
 
 function handleAddCardFormSubmit() {
@@ -130,46 +99,14 @@ function handleAddCardFormSubmit() {
   newCardPopup.close(); //close popup
   addCardFormElement.reset(); //Reset Form fields
   addNewCardValidator.resetForm(); //reset form and disable submit button
-  /*  handleModalClose(addCardModal); */
 }
-
-/* function handleModalClose(modal) {
-    modal.classList.remove("modal_open");
-  //Keydown removed
-  document.removeEventListener("keydown", handleEscKeyClose);
-} */
 
 function renderCardClass(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = card.viewCard();
   cardListElement.prepend(cardElement);
 }
-/* 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageElement = cardElement.querySelector(".card__image");
-  const cardTitleElement = cardElement.querySelector(".card__title");
 
-  //Delete Button
-
-  ////////////////////////////////
-  cardImageElement.addEventListener("click", () => {
-    const modalImage = previewImageModal.querySelector(".modal__image");
-    const modalImageHeading = previewImageModal.querySelector(
-      ".modal__image_heading"
-    );
-    modalImage.src = cardData.link;
-    modalImageHeading.textContent = cardData.name;
-    modalImage.alt = cardData.name;
-    openModal(previewImageModal);
-  });
-  ///////////////////////////
-  cardImageElement.src = cardData.link; //
-  cardImageElement.alt = cardData.name;
-  cardTitleElement.textContent = cardData.name;
-  return cardElement;
-}
- */
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////
 
 //////////////////////////////////////////// Profile Modal ////////////////////////////////////////////////////////////
@@ -178,44 +115,22 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = userInfo.name; //pre set name
   profileDescriptionInput.value = userInfo.job; //pre set job
   profilePopup.openPopup(); //open popup
-  /*  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent; */
-  /* openModal(profileModal); */
 });
 
 // Profile Modal Close Functions
-profileModalCloseButton.addEventListener(
-  "click",
-  () => profilePopup.close()
-  /* handleModalClose(profileModal) */
-);
-/* profileModal.addEventListener("click", handleOverlayClick); */
-/* profileEditForm.addEventListener("submit", handleProfileModalSubmit); */
+profileModalCloseButton.addEventListener("click", () => profilePopup.close());
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
 addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
-addCardModalCloseButton.addEventListener(
-  "click",
-  () => newCardPopup.close()
-  /* handleModalClose(addCardModal) */
-);
-/* addCardModal.addEventListener("click", handleOverlayClick); */
-/* addCardFormElement.addEventListener("submit", handleAddCardFormSubmit); */
+addCardModalCloseButton.addEventListener("click", () => newCardPopup.close());
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////// PREVIEW MODAL /////////////////////////////////////////////////////////
-// Close Preview Modal
-/* previewImageModalCloseButton.addEventListener("click", () =>
-  handleModalClose(previewImageModal)
-); */
-/* previewImageModal.addEventListener("click", handleOverlayClick);
- */
+
 ////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
-// Render Initial Cards
-/* initialCards.forEach((cardData) => {
-  renderCardClass(cardData);
-}); */
 
 //Render All Cards using Section Class
 section.renderItems(); //call renderItems of section class to render cards
