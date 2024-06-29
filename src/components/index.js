@@ -73,11 +73,11 @@ const popupImage = new popupWithImage("#preview__modal");
 popupImage.setEventListeners();
 
 //////////////////////////////////////////// FUNCTIONS //////////////////////////////////////////////////////
-function handleOverlayClick(evt) {
-  /*  if (evt.target.classList.contains("modal")) {
+/* function handleOverlayClick(evt) {
+   if (evt.target.classList.contains("modal")) {
       handleModalClose(evt.target);
-  } */
-}
+  }
+} */
 
 function handleImageClick(name, link) {
   popupImage.openPopup({ name, link });
@@ -91,19 +91,19 @@ function handleImageClick(name, link) {
   openModal(previewImageModal); */
 }
 
-function handleEscKeyClose(evt) {
-  /*   if (evt.key === "Escape") {
+/* function handleEscKeyClose(evt) {
+    if (evt.key === "Escape") {
     const openModal = document.querySelector(".modal_open");
     if (openModal) {
       handleModalClose(openModal);
     }
-  } */
-}
+  } 
+} */
 
-function openModal(modal) {
-  /*  modal.classList.add("modal_open");
-  document.addEventListener("keydown", handleEscKeyClose); */
-}
+/* function openModal(modal) {
+   modal.classList.add("modal_open");
+  document.addEventListener("keydown", handleEscKeyClose);
+} */
 
 function handleProfileModalSubmit(profileData) {
   console.log(profileData);
@@ -186,10 +186,10 @@ profileEditButton.addEventListener("click", () => {
 // Profile Modal Close Functions
 profileModalCloseButton.addEventListener(
   "click",
-  () => profilePopup.closePopup()
+  () => profilePopup.close()
   /* handleModalClose(profileModal) */
 );
-profileModal.addEventListener("click", handleOverlayClick);
+/* profileModal.addEventListener("click", handleOverlayClick); */
 /* profileEditForm.addEventListener("submit", handleProfileModalSubmit); */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -197,10 +197,10 @@ profileModal.addEventListener("click", handleOverlayClick);
 addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
 addCardModalCloseButton.addEventListener(
   "click",
-  () => newCardPopup.closePopup()
+  () => newCardPopup.close()
   /* handleModalClose(addCardModal) */
 );
-addCardModal.addEventListener("click", handleOverlayClick);
+/* addCardModal.addEventListener("click", handleOverlayClick); */
 /* addCardFormElement.addEventListener("submit", handleAddCardFormSubmit); */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

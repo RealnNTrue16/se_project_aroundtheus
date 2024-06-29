@@ -19,7 +19,7 @@ export default class Popup {
   }
 
   setEventListeners() {
-    //handle closing modal  by clicking close button
+    //handle closing modal by clicking close button
     const closeButton = this._popupElement.querySelector(".modal__close");
     closeButton.addEventListener("click", () => {
       console.log("Closed with Close button");
