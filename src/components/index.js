@@ -128,8 +128,8 @@ function handleAddCardFormSubmit() {
   cardTitleInput.value = ""; //clear name input field after rendering
   cardURLInput.value = ""; //clear link input field after rendering
   newCardPopup.close(); //close popup
-  /*  addCardFormElement.reset(); */ //Reset Form fields
-  /* addNewCardValidator.resetForm();  */ //reset form and disable submit button
+  addCardFormElement.reset(); //Reset Form fields
+  addNewCardValidator.resetForm(); //reset form and disable submit button
   /*  handleModalClose(addCardModal); */
 }
 
