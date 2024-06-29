@@ -1,6 +1,6 @@
 //Imports
 import "../pages/index.css";
-import { initialCards, config } from "../../utils/constants.js";
+import { initialCards, config } from "../utils/constants.js";
 import Card from "./card.js";
 import FormValidator from "./formValidator.js";
 import Section from "./section.js";
@@ -43,21 +43,17 @@ const previewImageModalCloseButton =
   previewImageModal.querySelector(".modal__close");
 const previewImageModalOverlay = document.querySelector("#preview__modal");
 
-//////////////////////////////////////////////////// CLASS DECLARATIONS /////////////////////////////////////////////////////
+//////////////////////////////////////////////////// CLASSES  /////////////////////////////////////////////////////////////////
 //Instantiate Section Class
 const section = new Section(
   { item: initialCards, renderer: renderCardClass },
   "#cards__list"
 );
-
 ////Instantiate UserInfo
 const user = new userInfo({
   name: ".profile__title",
   job: ".profile__description",
 });
-
-////
-//Forms Class Declarations
 ////
 //Instantiate popupWithForm for Profile
 const profilePopup = new popupWithForm(
@@ -66,15 +62,13 @@ const profilePopup = new popupWithForm(
 );
 profilePopup.setEventListeners();
 
-//Instantiate popupWithForm for Add Card
+//Instantiate popupWithForm for addCard
 const newCardPopup = new popupWithForm(
   "#card__add-modal",
   handleAddCardFormSubmit
 );
 newCardPopup.setEventListeners();
-///
 //////Preview Image popup class
-///popupWithImage class
 const popupImage = new popupWithImage("#preview__modal");
 popupImage.setEventListeners();
 
@@ -98,17 +92,17 @@ function handleImageClick(name, link) {
 }
 
 function handleEscKeyClose(evt) {
-  if (evt.key === "Escape") {
+  /*   if (evt.key === "Escape") {
     const openModal = document.querySelector(".modal_open");
     if (openModal) {
       handleModalClose(openModal);
     }
-  }
+  } */
 }
 
 function openModal(modal) {
-  modal.classList.add("modal_open");
-  document.addEventListener("keydown", handleEscKeyClose);
+  /*  modal.classList.add("modal_open");
+  document.addEventListener("keydown", handleEscKeyClose); */
 }
 
 function handleProfileModalSubmit(evnt) {
@@ -201,7 +195,7 @@ profileEditForm.addEventListener("submit", handleProfileModalSubmit);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
-addNewCardButton.addEventListener("click", () => openModal(addCardModal));
+addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
 addCardModalCloseButton.addEventListener(
   "click",
   () => newCardPopup.closePopup()
@@ -216,8 +210,8 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 /* previewImageModalCloseButton.addEventListener("click", () =>
   handleModalClose(previewImageModal)
 ); */
-previewImageModal.addEventListener("click", handleOverlayClick);
-
+/* previewImageModal.addEventListener("click", handleOverlayClick);
+ */
 ////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
 // Render Initial Cards
 /* initialCards.forEach((cardData) => {
