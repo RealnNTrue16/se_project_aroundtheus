@@ -5,8 +5,8 @@ import Card from "./card.js";
 import FormValidator from "./formValidator.js";
 import Section from "./section.js";
 import userInfo from "./userInfo.js";
-import popupWithForm from "./popupWithForm.js";
-import popupWithImage from "./popupWithImage.js";
+import PopupWithForm from "./popupWithForm.js";
+import PopupWithImage from "./popupWithImage.js";
 
 // Add Modals
 // Declare Profile Modal Variables
@@ -56,20 +56,20 @@ const user = new userInfo({
 });
 ////
 //Instantiate popupWithForm for Profile
-const profilePopup = new popupWithForm(
+const profilePopup = new PopupWithForm(
   "#profile__edit-modal",
   handleProfileModalSubmit
 );
 profilePopup.setEventListeners();
 
 //Instantiate popupWithForm for addCard
-const newCardPopup = new popupWithForm(
+const newCardPopup = new PopupWithForm(
   "#card__add-modal",
   handleAddCardFormSubmit
 );
 newCardPopup.setEventListeners();
 //////Preview Image popup class
-const popupImage = new popupWithImage("#preview__modal");
+const popupImage = new PopupWithImage("#preview__modal");
 popupImage.setEventListeners();
 
 //////////////////////////////////////////// FUNCTIONS //////////////////////////////////////////////////////
