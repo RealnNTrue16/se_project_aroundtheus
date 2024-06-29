@@ -263,4 +263,4 @@ profileValidator.enableValidation(); //Call enableValidation
 const addNewCardValidator = new FormValidator(config, addCardFormElement); //Pass in
 addNewCardValidator.enableValidation();
 /////////////////////
-//BUGS: ESC Key Not Working, Profile Info not displaying,
+//BUGS: ESC Key Not Working,
