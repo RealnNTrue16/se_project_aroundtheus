@@ -86,7 +86,7 @@ function handleProfileModalSubmit(profileData) {
   user.setUserInfo({ name, job }); //set user information
   const updatedUserInfo = user.getUserInfo(); //get updated information and store in a var
   console.log(updatedUserInfo); // debug log
-  profilePopup.close(); //close popup
+  profilePopup.closePopup(); //close popup
 }
 
 function handleAddCardFormSubmit(newCardData) {
@@ -96,7 +96,7 @@ function handleAddCardFormSubmit(newCardData) {
   console.log(name, alt, link, newCardData); //debug log
 
   renderCard({ name, link, alt }); //call renderCard to append card to page
-  newCardPopup.close(); //close popup
+  newCardPopup.closePopup(); //close popup
   addNewCardValidator.resetForm(); //reset form and disable submit button
 }
 
