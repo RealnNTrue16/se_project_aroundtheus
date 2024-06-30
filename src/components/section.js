@@ -2,8 +2,8 @@ export default class Section {
   constructor({ item, renderer }, Modalselector) {
     this._item = item;
     this._renderer = renderer;
-    this._Modalselector = document.querySelector(Modalselector);
-    console.log("Container:", Modalselector);
+    this._modalSelector = document.querySelector(modalSelector);
+    console.log("Container:", modalSelector);
   }
 
   renderItems() {
@@ -15,6 +15,6 @@ export default class Section {
 
   addItem(element) {
     //method to add one item
-    this._Modalselector.prepend(element);
+    this._modalSelector.prepend(element);
   }
 }
