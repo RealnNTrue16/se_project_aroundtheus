@@ -30,10 +30,11 @@ export default class Popup {
     });
   }
 
-  _handleEscClose(evt) {
+  _handleEscClose = (evt) => {
+    //use a named function expression to allow removeEventListener to reference the method
     if (evt.key === "Escape") {
       console.log("ESC");
       this.closePopup();
     }
-  }
+  };
 }
