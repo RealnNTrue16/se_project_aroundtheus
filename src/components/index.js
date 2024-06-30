@@ -82,11 +82,10 @@ function handleProfileModalSubmit(profileData) {
   console.log("profileData:", profileData);
   const name = profileData.title; //set name var to work with userInfo class
   const job = profileData.description; //set job var to work with userInfo class
-  console.log("name:", name, "job:", job);
+  console.log("name:", name, "job:", job); //debug log
   user.setUserInfo({ name, job }); //set user information
   const updatedUserInfo = user.getUserInfo(); //get updated information and store in a var
-  profileTitle.textContent = updatedUserInfo.name; //set name
-  profileDescription.textContent = updatedUserInfo.job; //set job
+  console.log(updatedUserInfo); // debug log
   profilePopup.close(); //close popup
 }
 
@@ -111,6 +110,7 @@ function createCard(cardData) {
 function renderCard(cardData) {
   const cardElement = createCard(cardData); //create card
   cardListElement.prepend(cardElement); //prepend cardElement to cardList
+  /* section.addItem(cardElement); */
 }
 
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////
@@ -123,14 +123,10 @@ profileEditButton.addEventListener("click", () => {
   profilePopup.openPopup(); //open popup
 });
 
-// Profile Modal Close Functions
-profileModalCloseButton.addEventListener("click", () => profilePopup.close());
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
 addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
-addCardModalCloseButton.addEventListener("click", () => newCardPopup.close());
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -155,3 +151,4 @@ profileValidator.enableValidation(); //Call enableValidation
 const addNewCardValidator = new FormValidator(config, addCardFormElement); //Pass in
 addNewCardValidator.enableValidation();
 /////////////////////
+//section rendering issue
