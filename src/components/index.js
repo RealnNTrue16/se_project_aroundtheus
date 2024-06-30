@@ -47,7 +47,7 @@ const previewImageModalOverlay = document.querySelector("#preview__modal");
 //Instantiate Section Class
 const section = new Section(
   { item: initialCards, renderer: renderCard },
-  "#cards__list"
+  ".cards__list"
 );
 ////Instantiate UserInfo
 const user = new userInfo({
@@ -110,8 +110,8 @@ function createCard(cardData) {
 function renderCard(cardData) {
   //function to render new card to page
   const cardElement = createCard(cardData); //create card;
-  /* section.addItem(cardElement); */
-  cardListElement.prepend(cardElement); //prepend cardElement to cardList
+  console.log(section);
+  section.addItem(cardElement);
   console.log(cardElement);
 }
 
