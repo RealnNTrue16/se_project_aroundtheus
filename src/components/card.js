@@ -1,4 +1,4 @@
-//Classes
+//Class creates card
 export default class Card {
   constructor(data, cardSelector, handleImageClick) {
     this._name = data.name; //set card name
@@ -16,7 +16,7 @@ export default class Card {
       .content.firstElementChild.cloneNode(true);
     this._cardElement = cardTemplate;
 
-    this._createCard();
+    this._createCard(); //call this._createCard() to create card
 
     //call set event listeners
     this._setEventListeners();

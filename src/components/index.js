@@ -46,7 +46,7 @@ const previewImageModalOverlay = document.querySelector("#preview__modal");
 //////////////////////////////////////////////////// CLASSES  /////////////////////////////////////////////////////////////////
 //Instantiate Section Class
 const section = new Section(
-  { item: initialCards, renderer: renderCardClass },
+  { item: initialCards, renderer: renderCard },
   "#cards__list"
 );
 ////Instantiate UserInfo
@@ -79,9 +79,10 @@ function handleImageClick(name, link) {
 }
 
 function handleProfileModalSubmit(profileData) {
-  console.log(profileData);
-  const name = profileTitleInput.value; //set name var to work with userInfo class
-  const job = profileDescriptionInput.value; //set job var to work with userInfo class
+  console.log("profileData:", profileData);
+  const name = profileData.title; //set name var to work with userInfo class
+  const job = profileData.description; //set job var to work with userInfo class
+  console.log("name:", name, "job:", job);
   user.setUserInfo({ name, job }); //set user information
   const updatedUserInfo = user.getUserInfo(); //get updated information and store in a var
   profileTitle.textContent = updatedUserInfo.name; //set name
@@ -89,22 +90,27 @@ function handleProfileModalSubmit(profileData) {
   profilePopup.close(); //close popup
 }
 
-function handleAddCardFormSubmit() {
-  const name = cardTitleInput.value; //set card name
-  const alt = cardTitleInput.value; //set card alt text
-  const link = cardURLInput.value; //set card image link
-  renderCardClass({ name, link, alt }); //call renderCard to append card to page
-  cardTitleInput.value = ""; //clear name input field after rendering
-  cardURLInput.value = ""; //clear link input field after rendering
+function handleAddCardFormSubmit(newCardData) {
+  const name = newCardData.title; //set card name
+  const alt = newCardData.title; //set card alt text
+  const link = newCardData.url; //set card image link
+  console.log(name, alt, link, newCardData); //debug log
+  renderCard({ name, link, alt }); //call renderCard to append card to page
+
   newCardPopup.close(); //close popup
-  addCardFormElement.reset(); //Reset Form fields
+
   addNewCardValidator.resetForm(); //reset form and disable submit button
 }
 
-function renderCardClass(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.viewCard();
-  cardListElement.prepend(cardElement);
+function createCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImageClick); //instantiate card class
+  const cardElement = card.viewCard(); //call viewCard of card class
+  return cardElement; //return card
+}
+
+function renderCard(cardData) {
+  const cardElement = createCard(cardData); //create card
+  cardListElement.prepend(cardElement); //prepend cardElement to cardList
 }
 
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////
