@@ -94,21 +94,24 @@ function handleAddCardFormSubmit(newCardData) {
   const alt = newCardData.title; //set card alt text
   const link = newCardData.url; //set card image link
   console.log(name, alt, link, newCardData); //debug log
+
   renderCard({ name, link, alt }); //call renderCard to append card to page
   newCardPopup.close(); //close popup
   addNewCardValidator.resetForm(); //reset form and disable submit button
 }
 
 function createCard(cardData) {
+  //function to create new card
   const card = new Card(cardData, "#card-template", handleImageClick); //instantiate card class
-  const cardElement = card.viewCard(); //call viewCard of card class
+  const cardElement = card.viewCard(); //call viewCard of card class to create
   return cardElement; //return card
 }
 
 function renderCard(cardData) {
-  const cardElement = createCard(cardData); //create card
-  section.renderItems(cardElement);
-  /*  cardListElement.prepend(cardElement); */ //prepend cardElement to cardList
+  //function to render new card to page
+  const cardElement = createCard(cardData); //create card;
+  cardListElement.prepend(cardElement); //prepend cardElement to cardList
+  console.log(cardElement);
 }
 
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////

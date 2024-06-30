@@ -3,6 +3,7 @@ export default class Section {
     this._item = item;
     this._renderer = renderer;
     this._Modalselector = document.querySelector(Modalselector);
+    console.log("Container:", Modalselector);
   }
 
   renderItems() {
