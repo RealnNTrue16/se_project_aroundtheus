@@ -110,6 +110,7 @@ function createCard(cardData) {
 function renderCard(cardData) {
   //function to render new card to page
   const cardElement = createCard(cardData); //create card;
+  /* section.addItem(cardElement); */
   cardListElement.prepend(cardElement); //prepend cardElement to cardList
   console.log(cardElement);
 }
