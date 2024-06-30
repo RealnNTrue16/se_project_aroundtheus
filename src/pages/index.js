@@ -1,12 +1,12 @@
 //Imports
 import "../pages/index.css";
 import { initialCards, config } from "../utils/constants.js";
-import Card from "./card.js";
-import FormValidator from "./formValidator.js";
-import Section from "./section.js";
-import userInfo from "./userInfo.js";
-import PopupWithForm from "./popupWithForm.js";
-import PopupWithImage from "./popupWithImage.js";
+import Card from "../components/card.js";
+import FormValidator from "../components/formValidator.js";
+import Section from "../components/section.js";
+import UserInfo from "../components/userInfo.js";
+import PopupWithForm from "../components/popupWithForm.js";
+import PopupWithImage from "../components/popupWithImage.js";
 
 // Add Modals
 // Declare Profile Modal Variables
@@ -50,7 +50,7 @@ const section = new Section(
   ".cards__list"
 );
 ////Instantiate UserInfo
-const user = new userInfo({
+const user = new UserInfo({
   name: ".profile__title",
   job: ".profile__description",
 });
