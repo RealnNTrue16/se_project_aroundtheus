@@ -14,6 +14,6 @@ export default class Section {
 
   addItem(element) {
     //method to add one item
-    this._selector.prepend(element);
+    this._Modalselector.prepend(element);
   }
 }

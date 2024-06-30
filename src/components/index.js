@@ -95,9 +95,7 @@ function handleAddCardFormSubmit(newCardData) {
   const link = newCardData.url; //set card image link
   console.log(name, alt, link, newCardData); //debug log
   renderCard({ name, link, alt }); //call renderCard to append card to page
-
   newCardPopup.close(); //close popup
-
   addNewCardValidator.resetForm(); //reset form and disable submit button
 }
 
@@ -109,8 +107,8 @@ function createCard(cardData) {
 
 function renderCard(cardData) {
   const cardElement = createCard(cardData); //create card
-  cardListElement.prepend(cardElement); //prepend cardElement to cardList
-  /* section.addItem(cardElement); */
+  section.renderItems(cardElement);
+  /*  cardListElement.prepend(cardElement); */ //prepend cardElement to cardList
 }
 
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////
