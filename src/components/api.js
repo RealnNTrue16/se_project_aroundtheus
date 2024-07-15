@@ -11,7 +11,7 @@ export default class Api {
       .then((res) => {
         if (res.ok) {
           //check for successful response
-          console.log("Respose:" + res);
+          console.log(res.ok);
           return res.json();
         }
         //check for unsuccessful response
@@ -22,13 +22,10 @@ export default class Api {
   }
 
   getUserInfo() {
-    return fetch(
-      "GET https://around-api.en.tripleten-services.com/v1/users/me",
-      {
-        headers: {
-          authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-        },
-      }
-    );
+    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+      headers: {
+        authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
+      },
+    });
   }
 }
