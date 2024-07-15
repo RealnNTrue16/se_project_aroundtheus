@@ -7,6 +7,7 @@ import Section from "../components/section.js";
 import UserInfo from "../components/userInfo.js";
 import PopupWithForm from "../components/popupWithForm.js";
 import PopupWithImage from "../components/popupWithImage.js";
+import Api from "../components/api.js";
 
 // Add Modals
 // Declare Profile Modal Variables
