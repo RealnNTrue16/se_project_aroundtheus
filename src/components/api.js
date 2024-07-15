@@ -40,7 +40,7 @@ export default class Api {
   }
 
   getUserAndCards() {
-    return Promise.all([this.getUserInfo(), this.getInitialCards()]) //return Prmoise array of method calls
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]) //return Promise array of method calls
       .then(([userInfo, cards]) => {
         console.log("Getting All Data...");
         console.log([userInfo, cards]);
@@ -100,6 +100,31 @@ export default class Api {
         //if unsuccessful
         console.log("ERROR");
         return Promise.reject(`Promise Rejected: ${res.status}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  deleteCard(cardId) {
+    return fetch(
+      `https://around-api.en.tripleten-services.com/v1/cards/${cardId}`, //fill cardID in with parameter
+      {
+        method: "DELETE",
+        headers: {
+          authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
+          "Content-type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          console.log("Deleting card");
+          return res.json();
+        }
+
+        console.log("Trouble deleting card");
+        return Promise.reject(`Card Deletion Error: ${res.status}`);
       })
       .catch((err) => {
         console.error(err);
