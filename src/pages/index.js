@@ -121,7 +121,7 @@ function renderCard(cardData) {
   const cardElement = createCard(cardData); //create card;
   /*   console.log(section); */
   section.addItem(cardElement);
-  console.log(cardElement);
+  /* console.log(cardElement); */
 }
 
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////
@@ -144,14 +144,12 @@ addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
 ////////////////////////////////////////////// PREVIEW MODAL /////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
-
-//Render All Cards using Section Class
-/* section.renderItems(); */ //call renderItems of section class to render cards
-api.getInitialCards().then((cards) => {
-  console.log(cards);
-  section.renderItems(cards);
+//Get UserInfo and Cards
+api.getUserAndCards().then(({ userInfo, cards }) => {
+  console.log({ userInfo, cards });
+  user.setUserInfo({ name: userInfo.name, job: userInfo.about });
+  section.renderItems({ cards });
 });
-//render All Initital cards using Api
 
 /////////////////////////////////////////////// VALIDATION /////////////////////////////////////////////////////////////
 
