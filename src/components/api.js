@@ -16,7 +16,7 @@ export default class Api {
         }
         //check for unsuccessful response
         console.log("Error");
-        return Promise.reject(`Error: ${res.status}`);
+        return Promise.reject(`getInitialCards method Error: ${res.status}`);
       }) //process errors
       .catch((err) => console.error(err));
   }
@@ -26,6 +26,28 @@ export default class Api {
       headers: {
         authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
       },
-    });
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log(res); //console log response for debugging
+          return res.json(); //then return parsed response
+        }
+        //check for unsuccessful response
+        console.log("Error");
+        return Promise.reject(`getUserInfo method Error: ${res.status}`);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  getUserAndCards() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]) //return Prmoise array of method calls
+      .then(([userInfo, cards]) => {
+        console.log("Getting All Data...");
+        console.log([userInfo, cards]);
+        return { userInfo, cards }; //return object containing userInfo and Card Data
+      })
+      .catch((err) => {
+        console.log(`getUserAndCards Method Error: ${err}`);
+      });
   }
 }
