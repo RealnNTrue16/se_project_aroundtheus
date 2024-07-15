@@ -73,6 +73,7 @@ newCardPopup.setEventListeners();
 const popupImage = new PopupWithImage("#preview__modal");
 popupImage.setEventListeners();
 
+const api = new Api();
 //////////////////////////////////////////// FUNCTIONS //////////////////////////////////////////////////////
 
 function handleImageClick(name, link) {
