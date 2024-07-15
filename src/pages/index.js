@@ -73,7 +73,14 @@ newCardPopup.setEventListeners();
 const popupImage = new PopupWithImage("#preview__modal");
 popupImage.setEventListeners();
 
-const api = new Api();
+const api = new Api({
+  baseURL: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
+    "Content-type": "application/json",
+  },
+});
+
 //////////////////////////////////////////// FUNCTIONS //////////////////////////////////////////////////////
 
 function handleImageClick(name, link) {
@@ -112,7 +119,7 @@ function createCard(cardData) {
 function renderCard(cardData) {
   //function to render new card to page
   const cardElement = createCard(cardData); //create card;
-  console.log(section);
+  /*   console.log(section); */
   section.addItem(cardElement);
   console.log(cardElement);
 }
@@ -139,9 +146,12 @@ addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
 ////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
 
 //Render All Cards using Section Class
-section.renderItems(); //call renderItems of section class to render cards
-
-//render new card
+/* section.renderItems(); */ //call renderItems of section class to render cards
+api.getInitialCards().then((cards) => {
+  console.log(cards);
+  section.renderItems(cards);
+});
+//render All Initital cards using Api
 
 /////////////////////////////////////////////// VALIDATION /////////////////////////////////////////////////////////////
 
