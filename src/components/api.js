@@ -78,4 +78,31 @@ export default class Api {
         console.error(err);
       });
   }
+  //method to send a new card to the server
+  createNewCard(name, link) {
+    //pass in name and link
+    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+      method: "POST",
+      headers: {
+        authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        link: link,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log(res);
+          return res.json(); //return response obj as json data
+        }
+        //if unsuccessful
+        console.log("ERROR");
+        return Promise.reject(`Promise Rejected: ${res.status}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }

@@ -104,7 +104,7 @@ function handleAddCardFormSubmit(newCardData) {
   const alt = newCardData.title; //set card alt text
   const link = newCardData.url; //set card image link
   console.log(name, alt, link, newCardData); //debug log
-
+  api.createNewCard(newCardData.title, newCardData.url);
   renderCard({ name, link, alt }); //call renderCard to append card to page
   newCardPopup.closePopup(); //close popup
   addNewCardValidator.resetForm(); //reset form and disable submit button
