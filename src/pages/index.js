@@ -93,6 +93,7 @@ function handleProfileModalSubmit(profileData) {
   const job = profileData.description; //set job var to work with userInfo class
   console.log("name:", name, "job:", job); //debug log
   user.setUserInfo({ name, job }); //set user information
+  api.updateUserInfo(profileData.title, profileData.description);
   const updatedUserInfo = user.getUserInfo(); //get updated information and store in a var
   console.log(updatedUserInfo); // debug log
   profilePopup.closePopup(); //close popup

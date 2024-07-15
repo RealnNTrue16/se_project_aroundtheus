@@ -36,7 +36,7 @@ export default class Api {
         console.log("Error");
         return Promise.reject(`getUserInfo method Error: ${res.status}`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }
 
   getUserAndCards() {
@@ -47,7 +47,35 @@ export default class Api {
         return { userInfo, cards }; //return object containing userInfo and Card Data
       })
       .catch((err) => {
-        console.log(`getUserAndCards Method Error: ${err}`);
+        console.error(`getUserAndCards Method Error: ${err}`);
+      });
+  }
+
+  updateUserInfo(name, about) {
+    //pass in name and about
+    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+      //make request to update server
+      method: "PATCH",
+      headers: {
+        authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        //stringify object containing user data
+        name: name,
+        about: about,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log(res);
+          return res.json();
+        }
+        console.log("ERROR");
+        return Promise.reject(`Promise Rejected: ${res.status}`);
+      })
+      .catch((err) => {
+        console.error(err);
       });
   }
 }
