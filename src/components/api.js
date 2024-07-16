@@ -122,7 +122,7 @@ export default class Api {
           console.log("Deleting card");
           return res.json();
         }
-
+        //if unsuccessful
         console.log("Trouble deleting card");
         return Promise.reject(`Card Deletion Error: ${res.status}`);
       })
