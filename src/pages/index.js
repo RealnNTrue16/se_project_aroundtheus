@@ -100,14 +100,29 @@ function handleProfileModalSubmit(profileData) {
 }
 
 function handleAddCardFormSubmit(newCardData) {
-  const name = newCardData.title; //set card name
-  const alt = newCardData.title; //set card alt text
-  const link = newCardData.url; //set card image link
-  console.log(name, alt, link, newCardData); //debug log
-  api.createNewCard(newCardData.title, newCardData.url);
-  renderCard({ name, link, alt }); //call renderCard to append card to page
-  newCardPopup.closePopup(); //close popup
-  addNewCardValidator.resetForm(); //reset form and disable submit button
+  api
+    .createNewCard(newCardData.title, newCardData.url)
+    .then((res) => {
+      console.log(res);
+      renderCard(res);
+      newCardPopup.closePopup(); //close popup
+      addNewCardValidator.resetForm(); //reset form and disable submit button
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+function handleCardDelete(cardId) {
+  api
+    .deleteCard()
+    .then((card) => {
+      console.log(card);
+      card.remove();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 function createCard(cardData) {
@@ -120,9 +135,7 @@ function createCard(cardData) {
 function renderCard(cardData) {
   //function to render new card to page
   const cardElement = createCard(cardData); //create card;
-  /*   console.log(section); */
   section.addItem(cardElement);
-  /* console.log(cardElement); */
 }
 
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////
@@ -145,12 +158,17 @@ addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
 ////////////////////////////////////////////// PREVIEW MODAL /////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
-//Get UserInfo and Cards
-api.getUserAndCards().then(({ userInfo, cards }) => {
-  console.log({ userInfo, cards });
-  user.setUserInfo({ name: userInfo.name, job: userInfo.about });
-  section.renderItems({ cards });
-});
+//Get initial UserInfo and Cards
+api
+  .getUserAndCards()
+  .then(({ userInfo, cards }) => {
+    // console.log({ userInfo, cards });
+    user.setUserInfo({ name: userInfo.name, job: userInfo.about });
+    section.renderItems(cards);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 /////////////////////////////////////////////// VALIDATION /////////////////////////////////////////////////////////////
 

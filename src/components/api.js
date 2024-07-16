@@ -29,7 +29,7 @@ export default class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log(res); //console log response for debugging
+          /* console.log(res);  */ //console log response for debugging
           return res.json(); //then return parsed response
         }
         //check for unsuccessful response
@@ -42,7 +42,7 @@ export default class Api {
   getUserAndCards() {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]) //return Promise array of method calls
       .then(([userInfo, cards]) => {
-        console.log("Getting All Data...");
+        console.log("Getting User and Card Data...");
         console.log([userInfo, cards]);
         return { userInfo, cards }; //return object containing userInfo and Card Data
       })
@@ -88,12 +88,14 @@ export default class Api {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
+        //stringify json obj
         name: name,
         link: link,
       }),
     })
       .then((res) => {
         if (res.ok) {
+          console.log("Card Added!");
           console.log(res);
           return res.json(); //return response obj as json data
         }
@@ -130,4 +132,6 @@ export default class Api {
         console.error(err);
       });
   }
+
+  cardLike() {}
 }
