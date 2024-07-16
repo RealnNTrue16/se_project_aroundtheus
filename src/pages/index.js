@@ -44,6 +44,9 @@ const previewImageModalCloseButton =
   previewImageModal.querySelector(".modal__close");
 const previewImageModalOverlay = document.querySelector("#preview__modal");
 
+//Delete Modal
+const deleteModal = document.querySelector("#delete__modal");
+
 //////////////////////////////////////////////////// CLASSES  /////////////////////////////////////////////////////////////////
 //Instantiate Section Class
 const section = new Section(
@@ -113,21 +116,35 @@ function handleAddCardFormSubmit(newCardData) {
     });
 }
 
+function handleCardDeleteModal() {
+  deleteModal.classList.add("modal_open");
+}
+
 function handleCardDelete(cardId) {
-  api
-    .deleteCard()
-    .then((card) => {
-      console.log(card);
-      card.remove();
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  deleteModal.classList.add("modal_open");
+
+  const deleteModalButton = deleteModal.querySelector(".modal__button");
+  deleteModalButton.addEventListener("click", () => {
+    api
+      .deleteCard(cardId)
+      .then((card) => {
+        console.log(card);
+        card.remove();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 }
 
 function createCard(cardData) {
   //function to create new card
-  const card = new Card(cardData, "#card-template", handleImageClick); //instantiate card class
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick,
+    handleCardDelete
+  ); //instantiate card class
   const cardElement = card.viewCard(); //call viewCard of card class to create
   return cardElement; //return card
 }
@@ -139,7 +156,9 @@ function renderCard(cardData) {
 }
 
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////
-
+/* cardDeleteButton.addEventListener("click", () => {
+  console.log("Delete");
+}); */
 //////////////////////////////////////////// Profile Modal ////////////////////////////////////////////////////////////
 profileEditButton.addEventListener("click", () => {
   const userInfo = user.getUserInfo(); //get user info

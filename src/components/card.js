@@ -1,10 +1,11 @@
 //Class creates card
 export default class Card {
-  constructor(data, cardSelector, handleImageClick) {
+  constructor(data, cardSelector, handleImageClick, handleCardDeleteModal) {
     this._name = data.name; //set card name
     this._link = data.link; //set card image
     this._cardSelector = cardSelector; //set card template selector
     this._handleImageClick = handleImageClick;
+    this._handleCardDeleteModal = handleCardDeleteModal;
   }
 
   //methods
@@ -45,7 +46,10 @@ export default class Card {
     //get card delete button
     const deleteButton = this._cardElement.querySelector(".card__delete");
     deleteButton.addEventListener("click", () => {
-      this._handleCardDelete();
+      console.log("Delete Modal");
+      this._handleCardDeleteModal();
+      /*  this._cardElement.classList.add("modal_open"); */
+      /* this._handleCardDelete(); */
     });
     //overlay listener
     const cardImageElement = this._cardElement.querySelector(".card__image");
@@ -66,5 +70,10 @@ export default class Card {
   _handleCardDelete() {
     this._cardElement.remove();
     console.log("DELETED!");
+  }
+
+  _handleDeleteModal() {
+    console.log("Opening Delete Modal");
+    this._handleCardDeleteModal.classList.add("modal_open");
   }
 }
