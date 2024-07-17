@@ -132,6 +132,7 @@ function closeDeleteModal() {
 function handleCardDelete(cardData) {
   //pass in card data
   console.log(cardData);
+
   openDeleteModal(); //open delete modal
   //close button functionality
   deleteModalCloseButton.addEventListener("click", () => {
@@ -140,9 +141,7 @@ function handleCardDelete(cardData) {
 
   console.log(cardData);
 
-  deleteModalButton.addEventListener("click", (cardData) => {
-    const cardId = cardData.id;
-    console.log(cardId);
+  deleteModalButton.addEventListener("click", () => {
     api
       .deleteCard(cardId)
       .then((card) => {
