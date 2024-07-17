@@ -131,6 +131,7 @@ function closeDeleteModal() {
 
 function handleCardDelete(cardData) {
   //pass in card data
+  console.log(cardData);
   openDeleteModal(); //open delete modal
   //close button functionality
   deleteModalCloseButton.addEventListener("click", () => {
@@ -139,8 +140,8 @@ function handleCardDelete(cardData) {
 
   console.log(cardData);
 
-  deleteModalButton.addEventListener("click", () => {
-    const cardId = cardData._id;
+  deleteModalButton.addEventListener("click", (cardData) => {
+    const cardId = cardData.id;
     console.log(cardId);
     api
       .deleteCard(cardId)
@@ -157,6 +158,7 @@ function handleCardDelete(cardData) {
 
 function createCard(cardData) {
   //function to create new card
+  console.log(cardData._id);
   const card = new Card(
     cardData,
     "#card-template",
@@ -169,6 +171,7 @@ function createCard(cardData) {
 
 function renderCard(cardData) {
   //function to render new card to page
+  console.log(cardData);
   const cardElement = createCard(cardData); //create card;
   section.addItem(cardElement);
 }
