@@ -49,7 +49,7 @@ export default class Card {
     //get card delete button
     const deleteButton = this._cardElement.querySelector(".card__delete");
     deleteButton.addEventListener("click", () => {
-      this._handleCardDeleteModal();
+      this._handleCardDeleteModal(this);
       /* this._handleCardDelete(); */
     });
     //overlay listener
@@ -67,7 +67,7 @@ export default class Card {
     console.log("Liked!");
   }
 
-  //method to handle card deletion
+  //method to handle card deletion from DOM
   _handleCardDelete() {
     this._cardElement.remove();
     console.log("DELETED!");
