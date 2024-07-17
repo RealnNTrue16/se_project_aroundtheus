@@ -3,6 +3,7 @@ export default class Card {
   constructor(data, cardSelector, handleImageClick, handleCardDeleteModal) {
     this._name = data.name; //set card name
     this._link = data.link; //set card image
+    this._id = data.id; //set card id
     this._cardSelector = cardSelector; //set card template selector
     this._handleImageClick = handleImageClick;
     this._handleCardDeleteModal = handleCardDeleteModal;
@@ -15,12 +16,14 @@ export default class Card {
     const cardTemplate = document
       .querySelector(this._cardSelector)
       .content.firstElementChild.cloneNode(true);
+
     this._cardElement = cardTemplate;
 
     this._createCard(); //call this._createCard() to create card
 
     //call set event listeners
     this._setEventListeners();
+
     //return card
     return this._cardElement;
   }
