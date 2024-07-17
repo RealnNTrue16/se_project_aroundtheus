@@ -3,7 +3,7 @@ export default class Card {
   constructor(data, cardSelector, handleImageClick, handleCardDeleteModal) {
     this._name = data.name; //set card name
     this._link = data.link; //set card image
-    this._id = data.id; //set card id
+    this._id = data._id; //set card id
     this._cardSelector = cardSelector; //set card template selector
     this._handleImageClick = handleImageClick;
     this._handleCardDeleteModal = handleCardDeleteModal;
@@ -70,6 +70,6 @@ export default class Card {
   //method to handle card deletion from DOM
   _handleCardDelete() {
     this._cardElement.remove();
-    console.log("DELETED!");
+    /* console.log("DELETED!"); */
   }
 }

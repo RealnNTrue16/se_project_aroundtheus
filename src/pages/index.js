@@ -143,10 +143,11 @@ function handleCardDelete(cardData) {
 
   deleteModalButton.addEventListener("click", () => {
     api
-      .deleteCard(cardId)
+      .deleteCard(cardData._id)
       .then((card) => {
         console.log(card);
-        card.remove();
+        cardData._handleCardDelete();
+        /* card.remove(); */
         closeDeleteModal();
       })
       .catch((err) => {
@@ -158,6 +159,7 @@ function handleCardDelete(cardData) {
 function createCard(cardData) {
   //function to create new card
   console.log(cardData._id);
+
   const card = new Card(
     cardData,
     "#card-template",
