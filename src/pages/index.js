@@ -5,6 +5,7 @@ import Card from "../components/card.js";
 import FormValidator from "../components/formValidator.js";
 import Section from "../components/section.js";
 import UserInfo from "../components/userInfo.js";
+import Popup from "../components/popup.js";
 import PopupWithForm from "../components/popupWithForm.js";
 import PopupWithImage from "../components/popupWithImage.js";
 import Api from "../components/api.js";
@@ -46,6 +47,8 @@ const previewImageModalOverlay = document.querySelector("#preview__modal");
 
 //Delete Modal
 const deleteModal = document.querySelector("#delete__modal");
+const deleteModalButton = deleteModal.querySelector(".modal__button");
+const deleteModalCloseButton = deleteModal.querySelector(".modal__close");
 
 //////////////////////////////////////////////////// CLASSES  /////////////////////////////////////////////////////////////////
 //Instantiate Section Class
@@ -116,20 +119,35 @@ function handleAddCardFormSubmit(newCardData) {
     });
 }
 
-function handleCardDeleteModal() {
+function openDeleteModal() {
+  console.log("Delete Modal Opening");
   deleteModal.classList.add("modal_open");
 }
 
-function handleCardDelete(cardId) {
-  deleteModal.classList.add("modal_open");
+function closeDeleteModal() {
+  console.log("Closing Delete Modal");
+  deleteModal.classList.remove("modal_open");
+}
 
-  const deleteModalButton = deleteModal.querySelector(".modal__button");
+function handleCardDelete(cardData) {
+  //pass in card data
+  openDeleteModal(); //open delete modal
+  //close button functionality
+  deleteModalCloseButton.addEventListener("click", () => {
+    closeDeleteModal();
+  });
+
+  console.log(cardData);
+
   deleteModalButton.addEventListener("click", () => {
+    const cardId = cardData._id;
+    console.log(cardId);
     api
       .deleteCard(cardId)
       .then((card) => {
         console.log(card);
         card.remove();
+        closeDeleteModal();
       })
       .catch((err) => {
         console.error(err);
@@ -159,6 +177,7 @@ function renderCard(cardData) {
 /* cardDeleteButton.addEventListener("click", () => {
   console.log("Delete");
 }); */
+
 //////////////////////////////////////////// Profile Modal ////////////////////////////////////////////////////////////
 profileEditButton.addEventListener("click", () => {
   const userInfo = user.getUserInfo(); //get user info
@@ -173,8 +192,6 @@ profileEditButton.addEventListener("click", () => {
 addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////// PREVIEW MODAL /////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
 //Get initial UserInfo and Cards
