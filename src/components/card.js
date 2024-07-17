@@ -46,9 +46,7 @@ export default class Card {
     //get card delete button
     const deleteButton = this._cardElement.querySelector(".card__delete");
     deleteButton.addEventListener("click", () => {
-      console.log("Delete Modal");
       this._handleCardDeleteModal();
-      /*  this._cardElement.classList.add("modal_open"); */
       /* this._handleCardDelete(); */
     });
     //overlay listener
@@ -70,10 +68,5 @@ export default class Card {
   _handleCardDelete() {
     this._cardElement.remove();
     console.log("DELETED!");
-  }
-
-  _handleDeleteModal() {
-    console.log("Opening Delete Modal");
-    this._handleCardDeleteModal.classList.add("modal_open");
   }
 }
