@@ -1,12 +1,20 @@
 //Class creates card
 export default class Card {
-  constructor(data, cardSelector, handleImageClick, handleCardDeleteModal) {
+  constructor(
+    data,
+    cardSelector,
+    handleImageClick,
+    handleCardDelete,
+    handleCardLike
+  ) {
     this._name = data.name; //set card name
     this._link = data.link; //set card image
     this._id = data._id; //set card id
+    this._like = data.isLiked; //set card like status
     this._cardSelector = cardSelector; //set card template selector
     this._handleImageClick = handleImageClick;
-    this._handleCardDeleteModal = handleCardDeleteModal;
+    this._handleCardDelete = handleCardDelete;
+    this._handleCardLike = handleCardLike;
   }
 
   //methods
@@ -44,12 +52,13 @@ export default class Card {
     const likeButton = this._cardElement.querySelector(".card__like-button"); //get card like button
     likeButton.addEventListener("click", () => {
       //set listener
-      this._handleCardLike();
+      this._handleCardLike(this);
+      console.log(this._like);
     });
     //get card delete button
     const deleteButton = this._cardElement.querySelector(".card__delete");
     deleteButton.addEventListener("click", () => {
-      this._handleCardDeleteModal(this);
+      this._handleCardDelete(this);
       /* this._handleCardDelete(); */
     });
     //overlay listener
@@ -59,7 +68,7 @@ export default class Card {
     });
   }
 
-  //method to handle card like
+  //method to handle card like in DOM
   _handleCardLike() {
     this._cardElement
       .querySelector(".card__like-button")

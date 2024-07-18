@@ -108,6 +108,7 @@ export default class Api {
       });
   }
 
+  //method to delete card from server
   deleteCard(cardId) {
     return fetch(
       `https://around-api.en.tripleten-services.com/v1/cards/${cardId}`, //fill cardID in with parameter
@@ -133,5 +134,27 @@ export default class Api {
       });
   }
 
-  cardLike() {}
+  cardLike(cardId) {
+    return fetch(
+      `https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          console.log("response ok: " + res.status);
+          return res.json();
+        }
+        //if unsuccessful
+        console.log("Unable to Like");
+        return Promise.reject(`Like Error:  + ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }
