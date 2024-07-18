@@ -68,8 +68,9 @@ export default class Card {
     });
   }
 
-  //method to handle card like in DOM
+  //method to handle card like and unlike in DOM
   _handleCardLike() {
+    this._like = !this._like; //toggle like status
     this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
