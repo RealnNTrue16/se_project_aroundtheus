@@ -132,14 +132,28 @@ function closeDeleteModal() {
 function handleCardLiked(cardData) {
   console.log(cardData);
   console.log(cardData._like);
-  api
-    .cardLike(cardData._id)
-    .then(() => {
-      cardData._handleCardLike(); //call card.js like method
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+
+  if (!cardData._liked) {
+    //if not liked
+    api
+      .cardLike(cardData._id)
+      .then(() => {
+        cardData._handleCardLike(); //call card.js like method
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  } else {
+    //if liked
+    api
+      .cardUnlike(cardData._id)
+      .then(() => {
+        cardData._handleCardLike();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }
 
 function handleCardDelete(cardData) {

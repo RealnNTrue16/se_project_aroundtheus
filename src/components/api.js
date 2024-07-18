@@ -157,4 +157,29 @@ export default class Api {
         console.log(err);
       });
   }
+
+  cardUnlike(cardId) {
+    return fetch(
+      `https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          console.log(`Unlike Status:  + ${res.status}`);
+          return res.json(); //parse data
+        }
+        //if unsuccessful
+        console.log("Unable To Unlike");
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        //process errors
+        console.error(err);
+      });
+  }
 }
