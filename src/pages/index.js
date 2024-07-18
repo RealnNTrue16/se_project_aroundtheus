@@ -5,7 +5,7 @@ import Card from "../components/card.js";
 import FormValidator from "../components/formValidator.js";
 import Section from "../components/section.js";
 import UserInfo from "../components/userInfo.js";
-import Popup from "../components/popup.js";
+
 import PopupWithForm from "../components/popupWithForm.js";
 import PopupWithImage from "../components/popupWithImage.js";
 import Api from "../components/api.js";
@@ -109,7 +109,7 @@ function handleAddCardFormSubmit(newCardData) {
   api
     .createNewCard(newCardData.title, newCardData.url)
     .then((res) => {
-      console.log(res);
+      /* console.log(res); */
       renderCard(res);
       newCardPopup.closePopup(); //close popup
       addNewCardValidator.resetForm(); //reset form and disable submit button
@@ -129,6 +129,19 @@ function closeDeleteModal() {
   deleteModal.classList.remove("modal_open");
 }
 
+function handleCardLiked(cardData) {
+  console.log(cardData);
+  console.log(cardData._like);
+  api
+    .cardLike(cardData._id)
+    .then(() => {
+      cardData._handleCardLike(); //call card.js like method
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
 function handleCardDelete(cardData) {
   //pass in card data
   console.log(cardData);
@@ -144,10 +157,8 @@ function handleCardDelete(cardData) {
   deleteModalButton.addEventListener("click", () => {
     api
       .deleteCard(cardData._id)
-      .then((card) => {
-        console.log(card);
-        cardData._handleCardDelete();
-        /* card.remove(); */
+      .then(() => {
+        cardData._handleCardDelete(); //call card.js
         closeDeleteModal();
       })
       .catch((err) => {
@@ -158,13 +169,14 @@ function handleCardDelete(cardData) {
 
 function createCard(cardData) {
   //function to create new card
-  console.log(cardData._id);
+  /*   console.log(cardData._id); */
 
   const card = new Card(
     cardData,
     "#card-template",
     handleImageClick,
-    handleCardDelete
+    handleCardDelete,
+    handleCardLiked
   ); //instantiate card class
   const cardElement = card.viewCard(); //call viewCard of card class to create
   return cardElement; //return card
@@ -172,7 +184,7 @@ function createCard(cardData) {
 
 function renderCard(cardData) {
   //function to render new card to page
-  console.log(cardData);
+  /*   console.log(cardData); */
   const cardElement = createCard(cardData); //create card;
   section.addItem(cardElement);
 }
