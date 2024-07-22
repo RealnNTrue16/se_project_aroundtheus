@@ -21,11 +21,14 @@
       <main class="content">
         <section class="profile page__section">
           <!--Start Profile Section-->
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="profile picture"
-            class="profile__image"
-          />
+          <div class="profile__image-wrappper">
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="profile picture"
+              class="profile__image"
+            />
+            <button class="profile__avatar-edit"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button

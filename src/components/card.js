@@ -53,7 +53,7 @@ export default class Card {
     likeButton.addEventListener("click", () => {
       //set listener
       this._handleCardLike(this);
-      console.log(this._like);
+      /*  console.log(this._like); */
     });
     //get card delete button
     const deleteButton = this._cardElement.querySelector(".card__delete");
@@ -68,18 +68,36 @@ export default class Card {
     });
   }
 
+  _update() {
+    this._like = !this._like;
+    this._handleCardLike();
+    this._update(this._id, this._like);
+  }
+
   //method to handle card like and unlike in DOM
   _handleCardLike() {
     this._like = !this._like; //toggle like status
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
-    console.log("Liked!");
+    const likeButton = this._cardElement.querySelector(".card__like-button");
+    if (this._like) {
+      this._cardElement
+        .querySelector(".card__like-button")
+        .classList.add("card__like-button_active");
+      console.log("Liked!");
+    } else {
+      this._cardElement
+        .querySelector(".card__like-button")
+        .classList.remove("card__like-button_active");
+    }
   }
 
   //method to handle card deletion from DOM
   _handleCardDelete() {
     this._cardElement.remove();
     /* console.log("DELETED!"); */
+  }
+
+  updateLike(Liked) {
+    this._like = Liked;
+    this._handleCardLike();
   }
 }
