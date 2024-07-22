@@ -50,6 +50,13 @@ const deleteModal = document.querySelector("#delete__modal");
 const deleteModalButton = deleteModal.querySelector(".modal__button");
 const deleteModalCloseButton = deleteModal.querySelector(".modal__close");
 
+//Avatar Modal
+const avatarModal = document.querySelector("#avatar__modal");
+const avatarEditButton = document.querySelector(".profile__avatar-edit");
+const avatarModalCloseButton = avatarModal.querySelector(".modal__close");
+console.log(avatarEditButton);
+console.log(avatarModal);
+
 //////////////////////////////////////////////////// CLASSES  /////////////////////////////////////////////////////////////////
 //Instantiate Section Class
 const section = new Section(
@@ -206,6 +213,14 @@ function renderCard(cardData) {
   section.addItem(cardElement);
 }
 
+function handleAvatarModalOpen() {
+  avatarModal.classList.add("modal_open");
+}
+
+function handleAvatarModalClose() {
+  avatarModal.classList.remove("modal_open");
+}
+
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////
 /* cardDeleteButton.addEventListener("click", () => {
   console.log("Delete");
@@ -220,6 +235,11 @@ profileEditButton.addEventListener("click", () => {
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+avatarEditButton.addEventListener("click", () => handleAvatarModalOpen());
+avatarModalCloseButton.addEventListener("click", () =>
+  handleAvatarModalClose()
+);
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
 addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
