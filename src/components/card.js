@@ -5,7 +5,8 @@ export default class Card {
     cardSelector,
     handleImageClick,
     handleCardDelete,
-    handleCardLike
+    handleCardLike,
+    handleCardDislike
   ) {
     this._name = data.name; //set card name
     this._link = data.link; //set card image
@@ -15,6 +16,7 @@ export default class Card {
     this._handleImageClick = handleImageClick;
     this._handleCardDelete = handleCardDelete;
     this._handleCardLike = handleCardLike;
+    this._handleDislike = handleCardDislike;
   }
 
   //methods
@@ -67,12 +69,6 @@ export default class Card {
       this._handleImageClick(this._name, this._link);
     });
   }
-
-  /*   _update() {
-    this._like = !this._like;
-    this._handleCardLike();
-    this._update(this._id, this._like);
-  } */
 
   //method to handle card like and unlike in DOM
   _updateLikeStatus() {

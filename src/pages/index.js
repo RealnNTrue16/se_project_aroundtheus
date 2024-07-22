@@ -88,7 +88,7 @@ newCardPopup.setEventListeners();
 const popupImage = new PopupWithImage("#preview__modal");
 popupImage.setEventListeners();
 
-const avatarPopup = new PopupWithForm("#avatar__modal");
+const avatarPopup = new PopupWithForm("#avatar__modal", handleAvatarUpdate);
 avatarPopup.setEventListeners();
 
 const api = new Api({
@@ -121,9 +121,9 @@ function handleAvatarUpdate(link) {
   console.log(link);
   api
     .updateProfilePic(link)
-    .then((data) => {
-      console.log(data);
-      user.setUserAvatar(link);
+    .then((response) => {
+      console.log(response);
+      user.setUserAvatar(response);
     })
     .catch((err) => {
       console.error(err);
@@ -166,22 +166,24 @@ function handleCardLiked(cardData) {
         console.log(`Card ${cardData._id} liked`);
         console.log(cardData);
         cardData.updateLike(true); //call card.js like method
-        /*    cardData._handleCardLike(); */
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  } else {
-    //if liked
-    api
-      .cardUnlike(cardData._id)
-      .then(() => {
-        cardData.updateLike(false);
       })
       .catch((err) => {
         console.error(err);
       });
   }
+}
+
+function handleDislike(cardData) {
+  console.log(cardData);
+  api
+    .cardUnlike(cardData._id)
+    .then((data) => {
+      console.log(data);
+      cardData.updateLike(false);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 function handleCardDelete(cardData) {
@@ -218,7 +220,8 @@ function createCard(cardData) {
     "#card-template",
     handleImageClick,
     handleCardDelete,
-    handleCardLiked
+    handleCardLiked,
+    handleDislike
   ); //instantiate card class
   const cardElement = card.viewCard(); //call viewCard of card class to create
   return cardElement; //return card
