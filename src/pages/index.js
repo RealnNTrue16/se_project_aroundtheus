@@ -112,6 +112,12 @@ function handleProfileModalSubmit(profileData) {
   profilePopup.closePopup(); //close popup
 }
 
+function handleAvatarUpdate() {
+  api.updateProfilePic().then(() => {
+    console.log("Updating Pic");
+  });
+}
+
 function handleAddCardFormSubmit(newCardData) {
   api
     .createNewCard(newCardData.title, newCardData.url)
