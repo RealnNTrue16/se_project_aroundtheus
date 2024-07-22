@@ -52,13 +52,14 @@ export default class Api {
   }
 
   updateProfilePic(link) {
+    console.log(link);
     return fetch(
       "https://around-api.en.tripleten-services.com/v1/users/me/avatar",
       {
         method: "PATCH",
         headers: {
           authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           avatar: link,
@@ -67,6 +68,7 @@ export default class Api {
     )
       .then((res) => {
         if (res.ok) {
+          console.log(res);
           console.log("Profile Picture Updating");
           return res.json();
         }

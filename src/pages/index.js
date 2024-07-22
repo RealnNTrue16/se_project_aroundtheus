@@ -55,8 +55,6 @@ const avatarModal = document.querySelector("#avatar__modal");
 const avatarEditButton = document.querySelector(".profile__avatar-edit");
 const avatarModalCloseButton = avatarModal.querySelector(".modal__close");
 const avatarModalSubmitButton = avatarModal.querySelector(".modal__button");
-console.log(avatarEditButton);
-console.log(avatarModal);
 
 //////////////////////////////////////////////////// CLASSES  /////////////////////////////////////////////////////////////////
 //Instantiate Section Class
@@ -119,15 +117,18 @@ function handleProfileModalSubmit(profileData) {
 
 function handleAvatarUpdate(link) {
   console.log(link);
+  const url = link.url;
   api
-    .updateProfilePic(link)
+    .updateProfilePic(url)
     .then((response) => {
       console.log(response);
-      user.setUserAvatar(response);
+      user.setUserAvatar(url);
     })
     .catch((err) => {
-      console.error(err);
+      console.error(`Error caught in HandleAvatarUpdate function ${err}`);
     });
+
+  avatarPopup.closePopup();
 }
 
 function handleAddCardFormSubmit(newCardData) {
