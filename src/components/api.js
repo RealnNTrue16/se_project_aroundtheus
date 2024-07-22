@@ -51,6 +51,34 @@ export default class Api {
       });
   }
 
+  updateProfilePic(link) {
+    return fetch(
+      "https://around-api.en.tripleten-services.com/v1/users/me/avatar",
+      {
+        method: "PATCH",
+        headers: {
+          authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          avatar: link,
+        }),
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          console.log("Profile Picture Updating");
+          return res.json();
+        }
+        //if unsuccessful
+        console.log("Can't update Profile Picture");
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   updateUserInfo(name, about) {
     //pass in name and about
     return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {

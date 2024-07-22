@@ -138,7 +138,10 @@ function handleCardLiked(cardData) {
     api
       .cardLike(cardData._id)
       .then(() => {
-        cardData._handleCardLike(); //call card.js like method
+        console.log(`Card ${cardData._id} liked`);
+        console.log(cardData);
+        /*    cardData.updateLike(true);  */ //call card.js like method
+        /*    cardData._handleCardLike(); */
       })
       .catch((err) => {
         console.error(err);
@@ -148,7 +151,7 @@ function handleCardLiked(cardData) {
     api
       .cardUnlike(cardData._id)
       .then(() => {
-        cardData._handleCardLike();
+        cardData.updateLike(false);
       })
       .catch((err) => {
         console.error(err);
