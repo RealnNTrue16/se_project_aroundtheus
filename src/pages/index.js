@@ -54,6 +54,7 @@ const deleteModalCloseButton = deleteModal.querySelector(".modal__close");
 const avatarModal = document.querySelector("#avatar__modal");
 const avatarEditButton = document.querySelector(".profile__avatar-edit");
 const avatarModalCloseButton = avatarModal.querySelector(".modal__close");
+const avatarModalSubmitButton = avatarModal.querySelector(".modal__button");
 console.log(avatarEditButton);
 console.log(avatarModal);
 
@@ -67,6 +68,7 @@ const section = new Section(
 const user = new UserInfo({
   name: ".profile__title",
   job: ".profile__description",
+  avatar: ".profile__image",
 });
 ////
 //Instantiate popupWithForm for Profile
@@ -85,6 +87,9 @@ newCardPopup.setEventListeners();
 //////Preview Image popup class
 const popupImage = new PopupWithImage("#preview__modal");
 popupImage.setEventListeners();
+
+const avatarPopup = new PopupWithForm("#avatar__modal");
+avatarPopup.setEventListeners();
 
 const api = new Api({
   baseURL: "https://around-api.en.tripleten-services.com/v1",
@@ -112,10 +117,17 @@ function handleProfileModalSubmit(profileData) {
   profilePopup.closePopup(); //close popup
 }
 
-function handleAvatarUpdate() {
-  api.updateProfilePic().then(() => {
-    console.log("Updating Pic");
-  });
+function handleAvatarUpdate(link) {
+  console.log(link);
+  api
+    .updateProfilePic(link)
+    .then((data) => {
+      console.log(data);
+      user.setUserAvatar(link);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 function handleAddCardFormSubmit(newCardData) {
@@ -153,7 +165,7 @@ function handleCardLiked(cardData) {
       .then(() => {
         console.log(`Card ${cardData._id} liked`);
         console.log(cardData);
-        /*    cardData.updateLike(true);  */ //call card.js like method
+        cardData.updateLike(true); //call card.js like method
         /*    cardData._handleCardLike(); */
       })
       .catch((err) => {
@@ -246,6 +258,10 @@ avatarEditButton.addEventListener("click", () => handleAvatarModalOpen());
 avatarModalCloseButton.addEventListener("click", () =>
   handleAvatarModalClose()
 );
+avatarModalSubmitButton.addEventListener("submit", (event) => {
+  debugger;
+  return handleAvatarUpdate();
+});
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
 addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
@@ -277,3 +293,7 @@ profileValidator.enableValidation(); //Call enableValidation
 const addNewCardValidator = new FormValidator(config, addCardFormElement); //Pass in
 addNewCardValidator.enableValidation();
 /////////////////////
+
+//New Photo Validation
+const avatarValidator = new FormValidator(config, avatarModal);
+avatarValidator.enableValidation();

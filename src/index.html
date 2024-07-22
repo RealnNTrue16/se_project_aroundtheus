@@ -154,9 +154,24 @@
       <div class="modal__container">
         <button class="modal__close" id="modal__close-button"></button>
         <p class="modal__heading">Add New Photo</p>
-        <button class="modal__button modal__popup__button" type="submit">
-          Send
-        </button>
+        <form class="modal__form modal__popup__form" id="add-card-form">
+          <input
+            type="url"
+            name="url"
+            id="card__description-input"
+            placeholder="Image URL"
+            class="modal__form-input modal__popup__input"
+            required
+          />
+          <span class="popup__error" id="card__description-input-error"></span>
+          <button
+            class="modal__button modal__popup__button modal__popup__button_disabled"
+            type="submit"
+            disabled
+          >
+            Update
+          </button>
+        </form>
       </div>
     </div>
     <!-- End Avatar Modal -->
