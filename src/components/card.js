@@ -68,15 +68,15 @@ export default class Card {
     });
   }
 
-  _update() {
+  /*   _update() {
     this._like = !this._like;
     this._handleCardLike();
     this._update(this._id, this._like);
-  }
+  } */
 
   //method to handle card like and unlike in DOM
-  _handleCardLike() {
-    this._like = !this._like; //toggle like status
+  _updateLikeStatus() {
+    /* this._like = !this._like; //toggle like status */
     const likeButton = this._cardElement.querySelector(".card__like-button");
     if (this._like) {
       this._cardElement
@@ -98,6 +98,6 @@ export default class Card {
 
   updateLike(Liked) {
     this._like = Liked;
-    this._handleCardLike();
+    this._updateLikeStatus();
   }
 }
