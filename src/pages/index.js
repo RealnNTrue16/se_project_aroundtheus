@@ -117,11 +117,11 @@ function handleProfileModalSubmit(profileData) {
 
 function handleAvatarUpdate(link) {
   console.log(link);
-  const url = link.url;
+  const url = link.url; //extract url from link object and set it to url value
   api
     .updateProfilePic(url)
     .then((response) => {
-      console.log(response);
+      console.log(cardData);
       user.setUserAvatar(url);
     })
     .catch((err) => {
@@ -155,36 +155,33 @@ function closeDeleteModal() {
   deleteModal.classList.remove("modal_open");
 }
 
-function handleCardLiked(cardData) {
-  console.log(cardData);
-  console.log(cardData._like);
+function handleCardLikes(cardData) {
+  /*   console.log(cardData);
+  console.log(cardData._like); */
 
   if (!cardData._liked) {
     //if not liked
+    console.log(cardData._like);
     api
       .cardLike(cardData._id)
       .then(() => {
-        console.log(`Card ${cardData._id} liked`);
-        console.log(cardData);
+        /*    console.log(`Card ${cardData._id} liked`); */
         cardData.updateLike(true); //call card.js like method
       })
       .catch((err) => {
         console.error(err);
       });
+  } else if (cardData._liked) {
+    //if liked
+    api
+      .cardUnlike(cardData._id)
+      .then(() => {
+        cardData.updateLike(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
-}
-
-function handleDislike(cardData) {
-  console.log(cardData);
-  api
-    .cardUnlike(cardData._id)
-    .then((data) => {
-      console.log(data);
-      cardData.updateLike(false);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
 }
 
 function handleCardDelete(cardData) {
@@ -221,8 +218,7 @@ function createCard(cardData) {
     "#card-template",
     handleImageClick,
     handleCardDelete,
-    handleCardLiked,
-    handleDislike
+    handleCardLikes
   ); //instantiate card class
   const cardElement = card.viewCard(); //call viewCard of card class to create
   return cardElement; //return card
@@ -274,12 +270,14 @@ addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
 
 ////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
 //Get initial UserInfo and Cards
+
 api
   .getUserAndCards()
   .then(({ userInfo, cards }) => {
-    // console.log({ userInfo, cards });
-    user.setUserInfo({ name: userInfo.name, job: userInfo.about });
-    section.renderItems(cards);
+    console.log({ userInfo, cards });
+    user.setUserInfo({ name: userInfo.name, job: userInfo.about }); //render profile info
+    user.setUserAvatar(userInfo.avatar); //render profile pic
+    section.renderItems(cards); //render cards from server
   })
   .catch((err) => {
     console.error(err);
