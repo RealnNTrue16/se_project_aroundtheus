@@ -159,7 +159,7 @@ function handleCardLikes(cardData) {
   /*   console.log(cardData);
   console.log(cardData._like); */
 
-  if (!cardData._liked) {
+  if (!cardData._like) {
     //if not liked
     console.log(cardData._like);
     api
@@ -171,7 +171,7 @@ function handleCardLikes(cardData) {
       .catch((err) => {
         console.error(err);
       });
-  } else if (cardData._liked) {
+  } else if (cardData._like) {
     //if liked
     api
       .cardUnlike(cardData._id)
@@ -194,13 +194,11 @@ function handleCardDelete(cardData) {
     closeDeleteModal();
   });
 
-  console.log(cardData);
-
   deleteModalButton.addEventListener("click", () => {
     api
       .deleteCard(cardData._id)
       .then(() => {
-        cardData._handleCardDelete(); //call card.js
+        cardData._handleCardDelete(cardData._id); //call card.js
         closeDeleteModal();
       })
       .catch((err) => {
