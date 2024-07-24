@@ -55,14 +55,11 @@ export default class Card {
     likeButton.addEventListener("click", () => {
       //set listener
       this._handleCardLike(this);
-
-      /*  console.log(this._like); */
     });
     //get card delete button
     const deleteButton = this._cardElement.querySelector(".card__delete");
     deleteButton.addEventListener("click", () => {
       this._handleCardDelete(this);
-      /* this._handleCardDelete(); */
     });
     //overlay listener
     const cardImageElement = this._cardElement.querySelector(".card__image");
@@ -73,7 +70,6 @@ export default class Card {
 
   //method to handle card like and unlike in DOM
   _updateLikeStatus() {
-    /*   const likeButton = this._cardElement.querySelector(".card__like-button"); */
     if (this._like) {
       this._cardElement
         .querySelector(".card__like-button")
