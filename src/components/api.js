@@ -40,7 +40,11 @@ export default class Api {
   }
 
   getUserAndCards() {
-    return Promise.all([this.getUserInfo(), this.getInitialCards()]) //return Promise array of method calls
+    return Promise.all([
+      this.getUserInfo(),
+      this.getInitialCards(),
+      this.updateProfilePic(),
+    ]) //return Promise array of method calls
       .then(([userInfo, cards]) => {
         console.log("Getting User and Card Data...");
         console.log([userInfo, cards]);
@@ -200,7 +204,7 @@ export default class Api {
     )
       .then((res) => {
         if (res.ok) {
-          console.log(`Unlike Status:  + ${res.status}`);
+          console.log(`Unlike Status: ${res.status}`);
           return res.json(); //parse data
         }
         //if unsuccessful

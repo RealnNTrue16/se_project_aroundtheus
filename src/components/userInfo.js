@@ -19,7 +19,6 @@ export default class userInfo {
   }
 
   setUserAvatar(link) {
-    /*     debugger; */
     this._avatar.src = link;
   }
 }
