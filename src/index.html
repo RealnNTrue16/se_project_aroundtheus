@@ -21,11 +21,14 @@
       <main class="content">
         <section class="profile page__section">
           <!--Start Profile Section-->
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="profile picture"
-            class="profile__image"
-          />
+          <div class="profile__image-wrappper">
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="profile picture"
+              class="profile__image"
+            />
+            <button class="profile__avatar-edit"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -116,7 +119,7 @@
             type="submit"
             disabled
           >
-            Create
+            Add
           </button>
         </form>
       </div>
@@ -133,6 +136,45 @@
     </div>
 
     <!--End Preview Modal-->
+
+    <!-- Delete Modal -->
+    <div class="modal" id="delete__modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal__close-button"></button>
+        <p class="modal__heading">Are You Sure?</p>
+        <button class="modal__button modal__popup__button" type="submit">
+          Delete
+        </button>
+      </div>
+    </div>
+    <!-- End Delete Modal -->
+
+    <!-- Avatar Modal -->
+    <div class="modal" id="avatar__modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal__close-button"></button>
+        <p class="modal__heading">Add New Photo</p>
+        <form class="modal__form modal__popup__form" id="add-card-form">
+          <input
+            type="url"
+            name="url"
+            id="card__description-input"
+            placeholder="Image URL"
+            class="modal__form-input modal__popup__input"
+            required
+          />
+          <span class="popup__error" id="card__description-input-error"></span>
+          <button
+            class="modal__button modal__popup__button modal__popup__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- End Avatar Modal -->
 
     <template id="card-template">
       <li class="card">
