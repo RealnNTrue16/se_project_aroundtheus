@@ -56,7 +56,10 @@ export default class Api {
   }
 
   updateProfilePic(link) {
-    console.log(link);
+    if (!link) {
+      //in case page loadsd with no link
+      return;
+    }
     return fetch(
       "https://around-api.en.tripleten-services.com/v1/users/me/avatar",
       {
