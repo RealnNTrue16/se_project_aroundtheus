@@ -85,6 +85,7 @@ export default class Card {
   //method to handle card deletion from DOM
   _handleCardDelete() {
     this._cardElement.remove();
+    this._cardElement = null;
     /* console.log("DELETED!"); */
   }
 

@@ -209,7 +209,7 @@ function handleCardDelete(cardData) {
     api
       .deleteCard(cardData._id)
       .then(() => {
-        cardData._handleCardDelete(cardData._id); //call card.js
+        cardData._handleCardDelete(cardData._id); //call card.js delete
         closeDeleteModal();
       })
       .catch((err) => {
