@@ -57,8 +57,8 @@ export default class Api {
 
   updateProfilePic(link) {
     if (!link) {
-      //in case page loadsd with no link
-      return;
+      //in case page loaded with no link
+      return; //exit function
     }
     return fetch(
       "https://around-api.en.tripleten-services.com/v1/users/me/avatar",
