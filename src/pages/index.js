@@ -35,6 +35,7 @@ const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
 const addCardFormElement = addCardModal.querySelector(".modal__form");
 const cardTitleInput = addCardModal.querySelector("#card__title-input");
 const cardURLInput = addCardModal.querySelector("#card__description-input");
+const addNewCardSubmitButton = addCardModal.querySelector(".modal__button");
 
 // Modal Overlay
 const addCardModalOverlay = document.querySelector("#card__add-modal");
@@ -116,22 +117,27 @@ function handleProfileModalSubmit(profileData) {
 }
 
 function handleAvatarUpdate(link) {
-  console.log(link);
   const url = link.url; //extract url from link object and set it to url value
+
+  avatarModalSubmitButton.textContent = "Saving...";
+
   api
     .updateProfilePic(url)
-    .then((response) => {
-      console.log(cardData);
+    .then(() => {
       user.setUserAvatar(url);
     })
     .catch((err) => {
       console.error(`Error caught in HandleAvatarUpdate function ${err}`);
     });
 
+  setTimeout(() => {
+    avatarModalSubmitButton.textContent = "Save";
+  }, 1000);
   avatarPopup.closePopup();
 }
 
 function handleAddCardFormSubmit(newCardData) {
+  addNewCardSubmitButton.textContent = "Adding...";
   api
     .createNewCard(newCardData.title, newCardData.url)
     .then((res) => {
@@ -143,6 +149,10 @@ function handleAddCardFormSubmit(newCardData) {
     .catch((err) => {
       console.error(err);
     });
+
+  setTimeout(() => {
+    addNewCardSubmitButton.textContent = "Add";
+  }, 1000);
 }
 
 function openDeleteModal() {
@@ -195,6 +205,7 @@ function handleCardDelete(cardData) {
   });
 
   deleteModalButton.addEventListener("click", () => {
+    deleteModalButton.textContent = "Deleting...";
     api
       .deleteCard(cardData._id)
       .then(() => {
@@ -204,13 +215,14 @@ function handleCardDelete(cardData) {
       .catch((err) => {
         console.error(err);
       });
+    setTimeout(() => {
+      deleteModalButton.textContent = "Delete";
+    }, 1000);
   });
 }
 
 function createCard(cardData) {
   //function to create new card
-  /*   console.log(cardData._id); */
-
   const card = new Card(
     cardData,
     "#card-template",
@@ -224,7 +236,6 @@ function createCard(cardData) {
 
 function renderCard(cardData) {
   //function to render new card to page
-  /*   console.log(cardData); */
   const cardElement = createCard(cardData); //create card;
   section.addItem(cardElement);
 }
@@ -257,13 +268,13 @@ avatarModalCloseButton.addEventListener("click", () =>
   handleAvatarModalClose()
 );
 avatarModalSubmitButton.addEventListener("submit", (event) => {
-  debugger;
+  console.log(avatarModalSubmitButton);
   return handleAvatarUpdate();
 });
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
 addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
-
+console.log(addNewCardSubmitButton);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
