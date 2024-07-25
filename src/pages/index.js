@@ -23,6 +23,7 @@ const profileDescriptionInput = document.querySelector(
 );
 const profileEditForm = profileModal.querySelector(".modal__form");
 const profileModalOverlay = document.querySelector("#profile__edit-modal");
+const profileModalSubmitButton = profileModal.querySelector(".modal__button");
 
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -105,6 +106,7 @@ function handleImageClick(name, link) {
 }
 
 function handleProfileModalSubmit(profileData) {
+  profileModalSubmitButton.textContent = "Saving...";
   console.log("profileData:", profileData);
   const name = profileData.title; //set name var to work with userInfo class
   const job = profileData.description; //set job var to work with userInfo class
@@ -114,6 +116,10 @@ function handleProfileModalSubmit(profileData) {
   const updatedUserInfo = user.getUserInfo(); //get updated information and store in a var
   console.log(updatedUserInfo); // debug log
   profilePopup.closePopup(); //close popup
+
+  setTimeout(() => {
+    profileModalSubmitButton.textContent = "Save";
+  }, 1000);
 }
 
 function handleAvatarUpdate(link) {
