@@ -14,25 +14,6 @@
   margin-right: 28px;
 }
 
-.profile__avatar-edit {
-  background: transparent;
-  background-image: url("../images/Vector\ \(5\).svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 120px;
-  height: 120px;
-  position: absolute;
-  left: 1px;
-  opacity: 0;
-  border: none;
-  border-radius: 100%;
-}
-
-.profile__avatar-edit:hover {
-  cursor: pointer;
-  opacity: 1;
-}
-
 .profile__info {
   display: grid;
   grid-template-areas:
