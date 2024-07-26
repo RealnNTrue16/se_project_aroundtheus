@@ -195,18 +195,17 @@ function handleCardLikes(cardData) {
 
 function handleCardDelete(cardData) {
   //pass in card data
-  console.log(cardData);
 
   deleteConfirm.openPopup(); //open delete modal
   //close button functionality
 
+  console.log(cardData);
   deleteModalButton.addEventListener("click", () => {
     deleteModalButton.textContent = "Deleting...";
     api
       .deleteCard(cardData._id)
       .then(() => {
-        cardData._handleCardDelete(cardData._id); //call card.js delete
-        /* closeDeleteModal(); */
+        cardData._removeCard(cardData._id); //call card.js delete
         deleteConfirm.closePopup();
       })
       .catch((err) => {
@@ -267,6 +266,10 @@ avatarModalCloseButton.addEventListener("click", () =>
 avatarModalSubmitButton.addEventListener("submit", (event) => {
   console.log(avatarModalSubmitButton);
   return handleAvatarUpdate();
+});
+
+deleteModalButton.addEventListener("click", () => {
+  handleCardDelete();
 });
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////

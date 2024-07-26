@@ -33,6 +33,7 @@ export default class Card {
     this._setEventListeners();
 
     //return card
+    console.log(this._cardElement);
     return this._cardElement;
   }
 
@@ -83,10 +84,9 @@ export default class Card {
   }
 
   //method to handle card deletion from DOM
-  _handleCardDelete() {
+  _removeCard() {
     this._cardElement.remove();
     this._cardElement = null;
-    /* console.log("DELETED!"); */
   }
 
   updateLike(Liked) {
