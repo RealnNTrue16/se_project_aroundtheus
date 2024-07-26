@@ -60,7 +60,7 @@ export default class Card {
     //get card delete button
     const deleteButton = this._cardElement.querySelector(".card__delete");
     deleteButton.addEventListener("click", () => {
-      this._handleCardDelete(this);
+      this._handleCardDelete(this); //call the passed in function on 'this'
     });
     //overlay listener
     const cardImageElement = this._cardElement.querySelector(".card__image");

@@ -1,4 +1,4 @@
-import Popup from "./popup";
+import Popup from "./Popup";
 
 //This class handles preview modal functionality
 export default class PopupWithImage extends Popup {
