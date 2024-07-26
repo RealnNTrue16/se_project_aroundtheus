@@ -20,7 +20,6 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    //modify to work with modals without inputs
     super.setEventListeners();
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault(); //prevent page refresh
