@@ -5,10 +5,10 @@ import Card from "../components/card.js";
 import FormValidator from "../components/formValidator.js";
 import Section from "../components/section.js";
 import UserInfo from "../components/userInfo.js";
-
 import PopupWithForm from "../components/popupWithForm.js";
 import PopupWithImage from "../components/popupWithImage.js";
 import Api from "../components/api.js";
+import PopupWithConfirm from "../components/popupWithConfirm.js";
 
 // Add Modals
 // Declare Profile Modal Variables
@@ -91,6 +91,9 @@ popupImage.setEventListeners();
 const avatarPopup = new PopupWithForm("#avatar__modal", handleAvatarUpdate);
 avatarPopup.setEventListeners();
 
+const deleteConfirm = new PopupWithConfirm("#delete__modal", handleCardDelete);
+deleteConfirm.setEventListeners();
+
 const api = new Api({
   baseURL: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -161,16 +164,6 @@ function handleAddCardFormSubmit(newCardData) {
   }, 1000);
 }
 
-function openDeleteModal() {
-  console.log("Delete Modal Opening");
-  deleteModal.classList.add("modal_open");
-}
-
-function closeDeleteModal() {
-  console.log("Closing Delete Modal");
-  deleteModal.classList.remove("modal_open");
-}
-
 function handleCardLikes(cardData) {
   /*   console.log(cardData);
   console.log(cardData._like); */
@@ -204,11 +197,8 @@ function handleCardDelete(cardData) {
   //pass in card data
   console.log(cardData);
 
-  openDeleteModal(); //open delete modal
+  deleteConfirm.openPopup(); //open delete modal
   //close button functionality
-  deleteModalCloseButton.addEventListener("click", () => {
-    closeDeleteModal();
-  });
 
   deleteModalButton.addEventListener("click", () => {
     deleteModalButton.textContent = "Deleting...";
@@ -216,7 +206,8 @@ function handleCardDelete(cardData) {
       .deleteCard(cardData._id)
       .then(() => {
         cardData._handleCardDelete(cardData._id); //call card.js delete
-        closeDeleteModal();
+        /* closeDeleteModal(); */
+        deleteConfirm.closePopup();
       })
       .catch((err) => {
         console.error(err);
