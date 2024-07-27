@@ -40,6 +40,7 @@ export default class Api {
   }
 
   getUserAndCards() {
+    //called to get all info to display on page
     return Promise.all([
       this.getUserInfo(),
       this.getInitialCards(),
