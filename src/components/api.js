@@ -1,12 +1,13 @@
 export default class Api {
-  constructor(options) {}
+  constructor(options) {
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
+  }
 
   //methods
   getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-      headers: {
-        authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-      },
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
     })
       .then((res) => {
         if (res.ok) {
@@ -22,10 +23,8 @@ export default class Api {
   }
 
   getUserInfo() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
-      headers: {
-        authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-      },
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
     })
       .then((res) => {
         if (res.ok) {
@@ -61,19 +60,13 @@ export default class Api {
       //in case page loaded with no link
       return; //exit function
     }
-    return fetch(
-      "https://around-api.en.tripleten-services.com/v1/users/me/avatar",
-      {
-        method: "PATCH",
-        headers: {
-          authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          avatar: link,
-        }),
-      }
-    )
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: link,
+      }),
+    })
       .then((res) => {
         if (res.ok) {
           console.log(res);
@@ -91,13 +84,10 @@ export default class Api {
 
   updateUserInfo(name, about) {
     //pass in name and about
-    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+    return fetch(`${this._baseUrl}/users/me`, {
       //make request to update server
       method: "PATCH",
-      headers: {
-        authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-        "Content-type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         //stringify object containing user data
         name: name,
@@ -119,12 +109,9 @@ export default class Api {
   //method to send a new card to the server
   createNewCard(name, link) {
     //pass in name and link
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: {
-        authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-        "Content-type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         //stringify json obj
         name: name,
@@ -149,13 +136,10 @@ export default class Api {
   //method to delete card from server
   deleteCard(cardId) {
     return fetch(
-      `https://around-api.en.tripleten-services.com/v1/cards/${cardId}`, //fill cardID in with parameter
+      `${this._baseUrl}/cards/${cardId}`, //fill cardID in with parameter
       {
         method: "DELETE",
-        headers: {
-          authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-          "Content-type": "application/json",
-        },
+        headers: this._headers,
       }
     )
       .then((res) => {
@@ -173,15 +157,10 @@ export default class Api {
   }
 
   cardLike(cardId) {
-    return fetch(
-      `https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`,
-      {
-        method: "PUT",
-        headers: {
-          authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-        },
-      }
-    )
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    })
       .then((res) => {
         if (res.ok) {
           console.log("response ok: " + res.status);
@@ -197,15 +176,10 @@ export default class Api {
   }
 
   cardUnlike(cardId) {
-    return fetch(
-      `https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
-        },
-      }
-    )
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    })
       .then((res) => {
         if (res.ok) {
           console.log(`Unlike Status: ${res.status}`);
