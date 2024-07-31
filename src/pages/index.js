@@ -95,7 +95,7 @@ const deleteConfirm = new PopupWithConfirm("#delete__modal", handleCardDelete);
 deleteConfirm.setEventListeners();
 
 const api = new Api({
-  baseURL: "https://around-api.en.tripleten-services.com/v1",
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "4792ec92-cf1c-45a6-8740-0f5d63585faa",
     "Content-type": "application/json",
@@ -274,7 +274,7 @@ deleteModalButton.addEventListener("click", () => {
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
 addNewCardButton.addEventListener("click", () => newCardPopup.openPopup());
-console.log(addNewCardSubmitButton);
+/* console.log(addNewCardSubmitButton); */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////// RENDERING //////////////////////////////////////////////////
