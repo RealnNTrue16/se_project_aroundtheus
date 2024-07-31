@@ -165,16 +165,12 @@ function handleAddCardFormSubmit(newCardData) {
 }
 
 function handleCardLikes(cardData) {
-  /*   console.log(cardData);
-  console.log(cardData._like); */
-
   if (!cardData._like) {
     //if not liked
     console.log(cardData._like);
     api
       .cardLike(cardData._id)
       .then(() => {
-        /*    console.log(`Card ${cardData._id} liked`); */
         cardData.updateLike(true); //call card.js like method
       })
       .catch((err) => {
