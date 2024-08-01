@@ -202,7 +202,7 @@ function handleCardDelete(cardData) {
     api
       .deleteCard(cardData._id)
       .then(() => {
-        cardData._removeCard(cardData._id); //call card.js delete
+        cardData.removeCard(cardData._id); //call card.js delete
         deleteConfirm.closePopup();
       })
       .catch((err) => {

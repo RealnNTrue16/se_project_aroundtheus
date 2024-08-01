@@ -42,6 +42,7 @@ export default class Api {
       //in case page loaded with no link
       return; //exit function
     }
+    debugger;
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
@@ -52,6 +53,8 @@ export default class Api {
         avatar: link,
       }),
     }).then((res) => {
+      console.log(avatar);
+      console.log(res);
       return this.checkResponse(res);
     });
   }
