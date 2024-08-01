@@ -134,6 +134,7 @@ function handleAvatarUpdate(link) {
     .updateProfilePic(url)
     .then(() => {
       user.setUserAvatar(url);
+      /* avatarPopup.closePopup(); */
     })
     .catch((err) => {
       console.error(`Error caught in HandleAvatarUpdate function ${err}`);

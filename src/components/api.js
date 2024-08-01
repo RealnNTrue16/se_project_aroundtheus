@@ -51,7 +51,9 @@ export default class Api {
       body: JSON.stringify({
         avatar: link,
       }),
-    }).then((res) => this.checkResponse(res));
+    }).then((res) => {
+      return this.checkResponse(res);
+    });
   }
 
   updateUserInfo(name, about) {
