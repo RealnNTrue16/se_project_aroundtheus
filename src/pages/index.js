@@ -207,10 +207,15 @@ function handleCardDelete(cardData) {
       })
       .catch((err) => {
         console.error(err);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          deleteModalButton.textContent = "Delete";
+        }, 1000);
       });
-    setTimeout(() => {
+    /*  setTimeout(() => {
       deleteModalButton.textContent = "Delete";
-    }, 1000);
+    }, 1000); */
   });
 }
 

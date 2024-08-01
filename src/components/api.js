@@ -42,12 +42,11 @@ export default class Api {
       //in case page loaded with no link
       return; //exit function
     }
-    debugger;
+
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
         ...this._headers,
-        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         avatar: link,
@@ -66,7 +65,6 @@ export default class Api {
       method: "PATCH",
       headers: {
         ...this._headers,
-        "Content-type": "application/json",
       },
       body: JSON.stringify({
         //stringify object containing user data
@@ -83,7 +81,6 @@ export default class Api {
       method: "POST",
       headers: {
         ...this._headers,
-        "Content-type": "application/json",
       },
       body: JSON.stringify({
         //stringify json obj
