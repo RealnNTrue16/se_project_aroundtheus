@@ -134,15 +134,16 @@ function handleAvatarUpdate(link) {
     .updateProfilePic(url)
     .then(() => {
       user.setUserAvatar(url);
-      /* avatarPopup.closePopup(); */
+      avatarPopup.closePopup();
     })
     .catch((err) => {
       console.error(`Error caught in HandleAvatarUpdate function ${err}`);
+    })
+    .finally(() => {
+      setTimeout(() => {
+        avatarModalSubmitButton.textContent = "Save";
+      }, 1000);
     });
-
-  setTimeout(() => {
-    avatarModalSubmitButton.textContent = "Save";
-  }, 1000);
   avatarPopup.closePopup();
 }
 
@@ -158,11 +159,12 @@ function handleAddCardFormSubmit(newCardData) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      setTimeout(() => {
+        addNewCardSubmitButton.textContent = "Add";
+      }, 1000);
     });
-
-  setTimeout(() => {
-    addNewCardSubmitButton.textContent = "Add";
-  }, 1000);
 }
 
 function handleCardLikes(cardData) {
@@ -213,9 +215,6 @@ function handleCardDelete(cardData) {
           deleteModalButton.textContent = "Delete";
         }, 1000);
       });
-    /*  setTimeout(() => {
-      deleteModalButton.textContent = "Delete";
-    }, 1000); */
   });
 }
 
