@@ -91,7 +91,7 @@ popupImage.setEventListeners();
 const avatarPopup = new PopupWithForm("#avatar__modal", handleAvatarUpdate);
 avatarPopup.setEventListeners();
 
-const deleteConfirm = new PopupWithConfirm("#delete__modal", handleCardDelete);
+const deleteConfirm = new PopupWithConfirm("#delete__modal");
 deleteConfirm.setEventListeners();
 
 const api = new Api({
@@ -134,7 +134,6 @@ function handleAvatarUpdate(link) {
     .updateProfilePic(url)
     .then(() => {
       user.setUserAvatar(url);
-      avatarPopup.closePopup();
     })
     .catch((err) => {
       console.error(`Error caught in HandleAvatarUpdate function ${err}`);
@@ -192,30 +191,34 @@ function handleCardLikes(cardData) {
   }
 }
 
+function handleDeleteModalOpen(cardData) {
+  console.log("opening...");
+  deleteConfirm.handleFormSubmit(() => {
+    //call handleFormSubmit method to set event listeners independently
+    handleCardDelete(cardData);
+  });
+  //open delete modal
+  deleteConfirm.openPopup();
+}
+
 function handleCardDelete(cardData) {
   //pass in card data
-
-  deleteConfirm.openPopup(); //open delete modal
-  //close button functionality
-
   console.log(cardData);
-  deleteModalButton.addEventListener("click", () => {
-    deleteModalButton.textContent = "Deleting...";
-    api
-      .deleteCard(cardData._id)
-      .then(() => {
-        cardData.removeCard(cardData._id); //call card.js delete
-        deleteConfirm.closePopup();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        setTimeout(() => {
-          deleteModalButton.textContent = "Delete";
-        }, 1000);
-      });
-  });
+  deleteModalButton.textContent = "Deleting...";
+  api
+    .deleteCard(cardData._id)
+    .then(() => {
+      cardData.removeCard(cardData._id); //call card.js delete
+      deleteConfirm.closePopup();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      setTimeout(() => {
+        deleteModalButton.textContent = "Delete";
+      }, 1000);
+    });
 }
 
 function createCard(cardData) {
@@ -224,7 +227,7 @@ function createCard(cardData) {
     cardData,
     "#card-template",
     handleImageClick,
-    handleCardDelete,
+    handleDeleteModalOpen,
     handleCardLikes
   ); //instantiate card class
   const cardElement = card.viewCard(); //call viewCard of card class to create
@@ -267,10 +270,6 @@ avatarModalCloseButton.addEventListener("click", () =>
 avatarModalSubmitButton.addEventListener("submit", (event) => {
   console.log(avatarModalSubmitButton);
   return handleAvatarUpdate();
-});
-
-deleteModalButton.addEventListener("click", () => {
-  handleCardDelete();
 });
 
 ///////////////////////////////////////////// Add New Card Modal //////////////////////////////////////////////////////
