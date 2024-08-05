@@ -52,7 +52,6 @@ export default class Api {
         avatar: link,
       }),
     }).then((res) => {
-      console.log(avatar);
       console.log(res);
       return this.checkResponse(res);
     });

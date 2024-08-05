@@ -127,6 +127,7 @@ function handleProfileModalSubmit(profileData) {
 
 function handleAvatarUpdate(link) {
   const url = link.url; //extract url from link object and set it to url value
+  console.log(url);
 
   avatarModalSubmitButton.textContent = "Saving...";
 
@@ -194,7 +195,7 @@ function handleCardLikes(cardData) {
 function handleDeleteModalOpen(cardData) {
   console.log("opening...");
   deleteConfirm.handleFormSubmit(() => {
-    //call handleFormSubmit method to set event listeners independently
+    //pass handleCardDelte to handleFormSubmit method to set event listeners independently
     handleCardDelete(cardData);
   });
   //open delete modal
