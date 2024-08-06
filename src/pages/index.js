@@ -193,7 +193,6 @@ function handleCardLikes(cardData) {
 }
 
 function handleDeleteModalOpen(cardData) {
-  console.log("opening...");
   deleteConfirm.handleFormSubmit(() => {
     //pass handleCardDelte to handleFormSubmit method to set event listeners independently
     handleCardDelete(cardData);
