@@ -31,9 +31,6 @@ export default class Api {
       .then(([userInfo, cards]) => {
         console.log([userInfo, cards]);
         return { userInfo, cards }; //return object containing userInfo and Card Data
-      })
-      .catch((err) => {
-        console.error(`getUserAndCards Method Error: ${err}`);
       });
   }
 

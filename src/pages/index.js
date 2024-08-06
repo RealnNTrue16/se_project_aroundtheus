@@ -140,9 +140,12 @@ function handleAvatarUpdate(link) {
       console.error(`Error caught in HandleAvatarUpdate function ${err}`);
     })
     .finally(() => {
+      avatarModalSubmitButton.disabled = true; //disable button after successful api call
+      avatarModalSubmitButton.classList.add("modal__popup__button_disabled"); //add disabled class
+
       setTimeout(() => {
         avatarModalSubmitButton.textContent = "Save";
-      }, 1000);
+      }, 100);
     });
   avatarPopup.closePopup();
 }
