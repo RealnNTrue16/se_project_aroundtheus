@@ -128,13 +128,13 @@ function handleProfileModalSubmit(profileData) {
 function handleAvatarUpdate(link) {
   const url = link.url; //extract url from link object and set it to url value
   console.log(url);
-
   avatarModalSubmitButton.textContent = "Saving...";
 
   api
     .updateProfilePic(url)
     .then(() => {
       user.setUserAvatar(url);
+      avatarPopup.closePopup();
     })
     .catch((err) => {
       console.error(`Error caught in HandleAvatarUpdate function ${err}`);
@@ -142,12 +142,10 @@ function handleAvatarUpdate(link) {
     .finally(() => {
       avatarModalSubmitButton.disabled = true; //disable button after successful api call
       avatarModalSubmitButton.classList.add("modal__popup__button_disabled"); //add disabled class
-
       setTimeout(() => {
         avatarModalSubmitButton.textContent = "Save";
       }, 100);
     });
-  avatarPopup.closePopup();
 }
 
 function handleAddCardFormSubmit(newCardData) {

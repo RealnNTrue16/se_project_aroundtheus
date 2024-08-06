@@ -17,7 +17,7 @@ export default class PopupWithConfirm extends Popup {
     this._confirmBtn.addEventListener("click", (evt) => {
       evt.preventDefault(); //prevent page refresh
       this._handleFormSubmit(this); //call handleFormSubmit
-      this.closePopup();
+      /*   this.closePopup(); */
     });
   }
 }
