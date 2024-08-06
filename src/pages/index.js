@@ -109,20 +109,28 @@ function handleImageClick(name, link) {
 }
 
 function handleProfileModalSubmit(profileData) {
-  profileModalSubmitButton.textContent = "Saving...";
   console.log("profileData:", profileData);
   const name = profileData.title; //set name var to work with userInfo class
   const job = profileData.description; //set job var to work with userInfo class
   console.log("name:", name, "job:", job); //debug log
-  user.setUserInfo({ name, job }); //set user information
-  api.updateUserInfo(profileData.title, profileData.description);
-  const updatedUserInfo = user.getUserInfo(); //get updated information and store in a var
-  console.log(updatedUserInfo); // debug log
-  profilePopup.closePopup(); //close popup
 
-  setTimeout(() => {
-    profileModalSubmitButton.textContent = "Save";
-  }, 1000);
+  api
+    .updateUserInfo(profileData.title, profileData.description)
+    .then(() => {
+      user.setUserInfo({ name, job }); //set user information
+      profileModalSubmitButton.textContent = "Saving...";
+      /*   const updatedUserInfo = user.getUserInfo(); */ //get updated information and store in a var
+      profilePopup.closePopup(); //close popup
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      setTimeout(() => {
+        profileModalSubmitButton.textContent = "Save";
+      }, 1000);
+    });
+  /*  console.log(updatedUserInfo); */ // debug log
 }
 
 function handleAvatarUpdate(link) {
@@ -169,21 +177,21 @@ function handleAddCardFormSubmit(newCardData) {
 }
 
 function handleCardLikes(cardData) {
-  if (!cardData._like) {
+  if (!cardData.like) {
     //if not liked
-    console.log(cardData._like);
+    console.log(cardData.like);
     api
-      .cardLike(cardData._id)
+      .cardLike(cardData.id)
       .then(() => {
         cardData.updateLike(true); //call card.js like method
       })
       .catch((err) => {
         console.error(err);
       });
-  } else if (cardData._like) {
+  } else if (cardData.like) {
     //if liked
     api
-      .cardUnlike(cardData._id)
+      .cardUnlike(cardData.id)
       .then(() => {
         cardData.updateLike(false);
       })
@@ -207,9 +215,9 @@ function handleCardDelete(cardData) {
   console.log(cardData);
   deleteModalButton.textContent = "Deleting...";
   api
-    .deleteCard(cardData._id)
+    .deleteCard(cardData.id)
     .then(() => {
-      cardData.removeCard(cardData._id); //call card.js delete
+      cardData.removeCard(cardData.id); //call card.js delete
       deleteConfirm.closePopup();
     })
     .catch((err) => {
@@ -242,11 +250,11 @@ function renderCard(cardData) {
 }
 
 function handleAvatarModalOpen() {
-  avatarModal.classList.add("modal_open");
+  avatarPopup.openPopup();
 }
 
 function handleAvatarModalClose() {
-  avatarModal.classList.remove("modal_open");
+  avatarPopup.closePopup();
 }
 
 ///////////////////////////////////////////// EVENT LISTENERS ///////////////////////////////////////////////////////

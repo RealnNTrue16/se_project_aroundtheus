@@ -9,8 +9,8 @@ export default class Card {
   ) {
     this._name = data.name; //set card name
     this._link = data.link; //set card image
-    this._id = data._id; //set card id
-    this._like = data.isLiked; //set card like status
+    this.id = data._id; //set card id
+    this.like = data.isLiked; //set card like status
     this._cardSelector = cardSelector; //set card template selector
     this._handleImageClick = handleImageClick;
     this._handleCardDelete = handleCardDelete;
@@ -71,7 +71,7 @@ export default class Card {
 
   //method to handle card like and unlike in DOM
   _updateLikeStatus() {
-    if (this._like) {
+    if (this.like) {
       this._cardElement
         .querySelector(".card__like-button")
         .classList.add("card__like-button_active");
@@ -90,7 +90,7 @@ export default class Card {
   }
 
   updateLike(Liked) {
-    this._like = Liked;
+    this.like = Liked;
     this._updateLikeStatus();
   }
 }
