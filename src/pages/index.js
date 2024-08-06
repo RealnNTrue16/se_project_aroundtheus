@@ -308,4 +308,4 @@ addNewCardValidator.enableValidation();
 //New Photo Validation
 const avatarValidator = new FormValidator(config, avatarModal);
 avatarValidator.enableValidation();
-//
+////////
