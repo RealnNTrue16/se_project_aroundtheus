@@ -113,12 +113,12 @@ function handleProfileModalSubmit(profileData) {
   const name = profileData.title; //set name var to work with userInfo class
   const job = profileData.description; //set job var to work with userInfo class
   console.log("name:", name, "job:", job); //debug log
+  profileModalSubmitButton.textContent = "Saving...";
 
   api
     .updateUserInfo(profileData.title, profileData.description)
     .then(() => {
       user.setUserInfo({ name, job }); //set user information
-      profileModalSubmitButton.textContent = "Saving...";
       /*   const updatedUserInfo = user.getUserInfo(); */ //get updated information and store in a var
       profilePopup.closePopup(); //close popup
     })
@@ -126,9 +126,7 @@ function handleProfileModalSubmit(profileData) {
       console.error(err);
     })
     .finally(() => {
-      setTimeout(() => {
-        profileModalSubmitButton.textContent = "Save";
-      }, 1000);
+      profileModalSubmitButton.textContent = "Save";
     });
   /*  console.log(updatedUserInfo); */ // debug log
 }
@@ -150,9 +148,7 @@ function handleAvatarUpdate(link) {
     .finally(() => {
       avatarModalSubmitButton.disabled = true; //disable button after successful api call
       avatarModalSubmitButton.classList.add("modal__popup__button_disabled"); //add disabled class
-      setTimeout(() => {
-        avatarModalSubmitButton.textContent = "Save";
-      }, 100);
+      avatarModalSubmitButton.textContent = "Save";
     });
 }
 
@@ -170,9 +166,7 @@ function handleAddCardFormSubmit(newCardData) {
       console.error(err);
     })
     .finally(() => {
-      setTimeout(() => {
-        addNewCardSubmitButton.textContent = "Add";
-      }, 1000);
+      addNewCardSubmitButton.textContent = "Add";
     });
 }
 
@@ -224,9 +218,7 @@ function handleCardDelete(cardData) {
       console.error(err);
     })
     .finally(() => {
-      setTimeout(() => {
-        deleteModalButton.textContent = "Delete";
-      }, 1000);
+      deleteModalButton.textContent = "Delete";
     });
 }
 
