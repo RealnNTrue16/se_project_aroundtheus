@@ -57,6 +57,7 @@ const avatarModal = document.querySelector("#avatar__modal");
 const avatarEditButton = document.querySelector(".profile__avatar-edit");
 const avatarModalCloseButton = avatarModal.querySelector(".modal__close");
 const avatarModalSubmitButton = avatarModal.querySelector(".modal__button");
+const avatarForm = avatarModal.querySelector(".modal__form");
 
 //////////////////////////////////////////////////// CLASSES  /////////////////////////////////////////////////////////////////
 //Instantiate Section Class
@@ -134,20 +135,19 @@ function handleProfileModalSubmit(profileData) {
 function handleAvatarUpdate(link) {
   const url = link.url; //extract url from link object and set it to url value
   console.log(url);
-  avatarModalSubmitButton.textContent = "Saving...";
+  avatarModalSubmitButton.textContent = "Saving..."; //update UI for user
 
   api
     .updateProfilePic(url)
     .then(() => {
       user.setUserAvatar(url);
       avatarPopup.closePopup();
+      avatarValidator.resetForm();
     })
     .catch((err) => {
       console.error(`Error caught in HandleAvatarUpdate function ${err}`);
     })
     .finally(() => {
-      avatarModalSubmitButton.disabled = true; //disable button after successful api call
-      avatarModalSubmitButton.classList.add("modal__popup__button_disabled"); //add disabled class
       avatarModalSubmitButton.textContent = "Save";
     });
 }
@@ -305,6 +305,6 @@ addNewCardValidator.enableValidation();
 //////////////////////////
 
 //New Photo Validation
-const avatarValidator = new FormValidator(config, avatarModal);
+const avatarValidator = new FormValidator(config, avatarForm);
 avatarValidator.enableValidation();
 ////////
