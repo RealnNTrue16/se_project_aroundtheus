@@ -273,9 +273,7 @@ profileEditButton.addEventListener("click", () => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 avatarEditButton.addEventListener("click", () => handleAvatarModalOpen());
-avatarModalCloseButton.addEventListener("click", () =>
-  handleAvatarModalClose()
-);
+
 avatarModalSubmitButton.addEventListener("submit", (event) => {
   console.log(avatarModalSubmitButton);
   return handleAvatarUpdate();
